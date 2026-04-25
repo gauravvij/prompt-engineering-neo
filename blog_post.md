@@ -422,7 +422,7 @@ This entire evaluation - from research to experimental design to analysis to pub
 
 ### What Neo Is
 
-Neo is an autonomous AI engineering agent that operates within VS Code, Cursor, or as a standalone tool. Unlike copilots that suggest code line-by-line, Neo takes high-level goals, plans the implementation, writes the code, runs experiments, analyzes results, and iterates until completion. It can:
+Neo AI Engineer is an autonomous AI engineering agent that operates within VS Code, Cursor, or as a standalone tool. Unlike copilots that suggest code line-by-line, Neo takes high-level goals, plans the implementation, writes the code, runs experiments, analyzes results, and iterates until completion. It can:
 
 - Research and synthesize information from papers, documentation, and best practices
 - Design and implement ML experiments with proper controls
