@@ -1,4 +1,4 @@
-# What Is Prompt Engineering: A Technical Deep Dive
+# What Is Prompt Engineering?
 
 ## A Grounded Definition
 
