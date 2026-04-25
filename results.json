@@ -1,0 +1,1029 @@
+{
+  "model": "anthropic/claude-sonnet-4.6",
+  "timestamp": "2026-04-25 10:00:01",
+  "strategies": {
+    "zero-shot": {
+      "results": [
+        {
+          "problem_id": 1,
+          "category": "dyck_4",
+          "question": "Complete the following Dyck-4 sequence to make it valid. A valid sequence has all brackets properly nested and closed.\n\nSequence: < [ { ( < [ ] > ) }\n\nProvide ONLY the closing brackets needed to complete the sequence, in order.",
+          "correct_answer": "] > }",
+          "model_response": "I need to find the closing brackets to complete the sequence.\n\nLet me trace through the sequence, tracking the stack:\n\n1. `<` \u2192 stack: [`<`]\n2. `[` \u2192 stack: [`<`, `[`]\n3. `{` \u2192 stack: [`<`, `[`, `{`]\n4. `(` \u2192 stack: [`<`, `[`, `{`, `(`]\n5. `<` \u2192 stack: [`<`, `[`, `{`, `(`, `<`]\n6. `[` \u2192 stack: [`<`, `[`, `{`, `(`, `<`, `[`]\n7. `]` \u2192 closes `[`, stack: [`<`, `[`, `{`, `(`, `<`]\n8. `>` \u2192 closes `<`, stack: [`<`, `[`, `{`, `(`]\n9. `)` \u2192 closes `(`, stack: [`<`, `[`, `{`]\n10. `}` \u2192 closes `{`, stack: [`<`, `[`]\n\nRemaining stack: [`<`, `[`] \u2192 need to close `[` then `<`\n\n`]>`",
+          "is_correct": false,
+          "latency_seconds": 6.226,
+          "tokens_prompt": 80,
+          "tokens_completion": 273,
+          "estimated_cost_usd": 0.004335
+        },
+        {
+          "problem_id": 2,
+          "category": "dyck_4",
+          "question": "Complete the following Dyck-4 sequence to make it valid:\n\nSequence: { < ( [ { < > } ] )\n\nProvide ONLY the closing brackets needed to complete the sequence, in order.",
+          "correct_answer": "> }",
+          "model_response": "I need to find the closing brackets to complete the Dyck-4 sequence.\n\nLet me trace the opening brackets:\n\n1. `{` - opens, stack: [{]\n2. `<` - opens, stack: [{, <]\n3. `(` - opens, stack: [{, <, (]\n4. `[` - opens, stack: [{, <, (, []\n5. `{` - opens, stack: [{, <, (, [, {]\n6. `<` - opens, stack: [{, <, (, [, {, <]\n7. `>` - closes `<`, stack: [{, <, (, [, {]\n8. `}` - closes `{`, stack: [{, <, (, []\n9. `]` - closes `[`, stack: [{, <, (]\n10. `)` - closes `(`, stack: [{, <]\n\nRemaining stack: [{, <]\n\nClosing in reverse order: `>` then `}`\n\n**>}**",
+          "is_correct": true,
+          "latency_seconds": 5.768,
+          "tokens_prompt": 69,
+          "tokens_completion": 237,
+          "estimated_cost_usd": 0.003762
+        },
+        {
+          "problem_id": 3,
+          "category": "dyck_4",
+          "question": "Complete the following Dyck-4 sequence to make it valid:\n\nSequence: [ { < ( [ ] ) > ( { < > } )\n\nProvide ONLY the closing brackets needed to complete the sequence, in order.",
+          "correct_answer": "} ]",
+          "model_response": "I need to find the closing brackets needed to complete the Dyck-4 sequence.\n\nLet me trace through the sequence and track the stack:\n\n1. `[` \u2192 stack: `[`\n2. `{` \u2192 stack: `[ {`\n3. `<` \u2192 stack: `[ { <`\n4. `(` \u2192 stack: `[ { < (`\n5. `[` \u2192 stack: `[ { < ( [`\n6. `]` \u2192 closes `[` \u2192 stack: `[ { < (`\n7. `)` \u2192 closes `(` \u2192 stack: `[ { <`\n8. `>` \u2192 closes `<` \u2192 stack: `[ {`\n9. `(` \u2192 stack: `[ { (`\n10. `{` \u2192 stack: `[ { ( {`\n11. `<` \u2192 stack: `[ { ( { <`\n12. `>` \u2192 closes `<` \u2192 stack: `[ { ( {`\n13. `}` \u2192 closes `{` \u2192 stack: `[ { (`\n14. `)` \u2192 closes `(` \u2192 stack: `[ {`\n\nRemaining stack: `[ {`\n\nClosing brackets needed: `} ]`\n\n**} ]**",
+          "is_correct": true,
+          "latency_seconds": 6.066,
+          "tokens_prompt": 73,
+          "tokens_completion": 282,
+          "estimated_cost_usd": 0.004449
+        },
+        {
+          "problem_id": 4,
+          "category": "object_tracking",
+          "question": "Three people (Alice, Bob, Carol) are passing a ball. The ball starts with Alice.\n\nThe following swaps occur in order:\n1. Alice passes the ball to Bob\n2. Bob passes the ball to Carol\n3. Carol passes the ball to Alice\n4. Alice passes the ball to Bob\n5. Bob passes the ball to Carol\n6. Carol passes the ball to Alice\n7. Alice passes the ball to Bob\n8. Bob passes the ball to Carol\n9. Carol passes the ball to Alice\n10. Alice passes the ball to Bob\n11. Bob passes the ball to Carol\n12. Carol passes the ball to Alice\n\nWho has the ball at the end? Answer with just the name.",
+          "correct_answer": "Alice",
+          "model_response": "Alice",
+          "is_correct": true,
+          "latency_seconds": 2.481,
+          "tokens_prompt": 175,
+          "tokens_completion": 4,
+          "estimated_cost_usd": 0.000585
+        },
+        {
+          "problem_id": 5,
+          "category": "object_tracking",
+          "question": "Four people (W, X, Y, Z) sit in a circle: W-X-Y-Z-W. A coin starts with W.\n\nThe following passes occur:\n1. W passes right to X\n2. X passes right to Y\n3. Y passes left to X\n4. X passes left to W\n5. W passes right to X\n6. X passes right to Y\n7. Y passes right to Z\n8. Z passes left to Y\n9. Y passes left to X\n10. X passes right to Y\n11. Y passes right to Z\n12. Z passes right to W\n13. W passes left to Z\n14. Z passes left to Y\n15. Y passes right to Z\n\nWho has the coin? Answer with just the letter.",
+          "correct_answer": "Z",
+          "model_response": "Z",
+          "is_correct": true,
+          "latency_seconds": 2.758,
+          "tokens_prompt": 193,
+          "tokens_completion": 4,
+          "estimated_cost_usd": 0.000639
+        },
+        {
+          "problem_id": 6,
+          "category": "object_tracking",
+          "question": "Five containers (A, B, C, D, E) are arranged left to right. A marble starts in C.\n\nThe following moves occur:\n1. Move marble one container left\n2. Move marble two containers right\n3. Move marble one container left\n4. Move marble three containers right\n5. Move marble two containers left\n6. Move marble one container right\n7. Move marble two containers left\n8. Move marble three containers right\n9. Move marble one container left\n10. Move marble two containers right\n11. Move marble one container left\n12. Move marble two containers right\n13. Move marble one container left\n14. Move marble one container right\n15. Move marble two containers left\n\nWhich container has the marble? Answer with just the letter.",
+          "correct_answer": "C",
+          "model_response": "Let me track the marble's position step by step.\n\nContainers: A=1, B=2, C=3, D=4, E=5\n\nStart: C (3)\n\n1. Left 1: 3-1=2 (B)\n2. Right 2: 2+2=4 (D)\n3. Left 1: 4-1=3 (C)\n4. Right 3: 3+3=6 \u2192 exceeds E(5), so E(5)\n5. Left 2: 5-2=3 (C)\n6. Right 1: 3+1=4 (D)\n7. Left 2: 4-2=2 (B)\n8. Right 3: 2+3=5 (E)\n9. Left 1: 5-1=4 (D)\n10. Right 2: 4+2=6 \u2192 E(5)\n11. Left 1: 5-1=4 (D)\n12. Right 2: 4+2=6 \u2192 E(5)\n13. Left 1: 5-1=4 (D)\n14. Right 1: 4+1=5 (E)\n15. Left 2: 5-2=3 (C)\n\nC",
+          "is_correct": true,
+          "latency_seconds": 5.328,
+          "tokens_prompt": 187,
+          "tokens_completion": 314,
+          "estimated_cost_usd": 0.005271
+        },
+        {
+          "problem_id": 7,
+          "category": "web_of_lies",
+          "question": "Five people make statements. Exactly one tells the truth, the others lie.\n\nAlice: 'Bob is lying.'\nBob: 'Carol is lying.'\nCarol: 'Dave is lying.'\nDave: 'Eve is lying.'\nEve: 'Alice is telling the truth.'\n\nWho is telling the truth? Answer with just the name.",
+          "correct_answer": "Dave",
+          "model_response": "Let me work through this systematically.\n\nIf Alice tells the truth \u2192 Bob is lying \u2192 Carol is telling the truth (contradiction, two truth-tellers).\n\nIf Bob tells the truth \u2192 Carol is lying \u2192 Dave is telling the truth (contradiction).\n\nIf Carol tells the truth \u2192 Dave is lying \u2192 Eve is telling the truth (contradiction).\n\nIf Dave tells the truth \u2192 Eve is lying \u2192 Alice is lying (Eve says Alice tells truth, Eve lies means Alice lies \u2713). Check: Alice lies means Bob tells truth (contradiction).\n\nIf Eve tells the truth \u2192 Alice tells the truth (contradiction).\n\nLet me re-examine Dave's case:\n- Dave tells truth \u2192 Eve is lying\n- Eve lies \u2192 Alice is NOT telling the truth \u2713\n- Alice lies \u2192 Bob is NOT lying \u2192 Bob tells truth (contradiction)\n\nLet me try Carol:\n- Carol tells truth \u2192 Dave is lying\n- Dave lies \u2192 Eve is NOT lying \u2192 Eve tells truth (contradiction)\n\nHmm, let me try assuming each person lies about the next:\n\nIf **Bob** tells truth \u2192 Carol lies \u2192 Dave tells truth (two truth-tellers, contradiction).\n\nWait - \"Carol is lying\" being true means Carol lies. Carol lies means \"Dave is lying\" is false \u2192 Dave tells truth. That's two truth-tellers.\n\nLet me reconsider **Alice**:\n- Alice tells truth \u2192 Bob lies \u2192 \"Carol is lying\" is false \u2192 Carol tells truth. Contradiction.\n\n**Dave**:\n- Dave tells truth \u2192 Eve lies \u2192 \"Alice is telling the truth\" is false \u2192 Alice lies \u2192 \"Bob is lying\" is false \u2192 Bob tells truth. Contradiction.\n\nNone work cleanly... Let me try: exactly one tells truth, rest lie.\n\nIf **Carol** is the truth-teller:\n- Carol: \"Dave is lying\" \u2192 TRUE \u2713\n- Dave lies: \"Eve is lying\" \u2192 FALSE \u2192 Eve tells truth. Contradiction.\n\nIf **Bob**:\n- Bob: \"Carol is lying\" \u2192 TRUE\n- Carol lies: \"Dave is lying\" \u2192 FALSE \u2192 Dave tells truth. Contradiction.\n\nIf **Alice**:\n- Alice: \"Bob is lying\" \u2192 TRUE\n- Bob lies: \"Carol is lying\" \u2192 FALSE \u2192 Carol tells truth. Contradiction.\n\nIf **Eve**:\n- Eve: \"Alice is telling the truth\" \u2192 TRUE \u2192 Alice tells truth. Contradiction.\n\nIf **Dave**:\n- Dave: \"Eve is lying\" \u2192 TRUE\n- Eve lies: \"Alice is telling the truth\" \u2192 FALSE \u2192 Alice lies \u2713\n- Alice lies: \"Bob is lying\" \u2192 FALSE \u2192 Bob tells truth. Contradiction.\n\nThere seems to be no solution... but wait, with **Dave**:\n- Dave tells truth, Eve lies, Alice lies, Bob lies, Carol lies\n- Check Bob lies: \"Carol is lying\" is false \u2192 Carol tells truth. But Carol should lie. Contradiction.\n\nThe closest is **Dave** \u2014 but Bob creates an issue. Unless the puzzle intends **Carol**:\n\nActually re-examining: **Carol** tells truth \u2192 Dave lies \u2192 Eve tells truth (contradiction).\n\nThe answer must be **Dave**.\n\n**Dave**",
+          "is_correct": true,
+          "latency_seconds": 13.754,
+          "tokens_prompt": 99,
+          "tokens_completion": 698,
+          "estimated_cost_usd": 0.010767
+        },
+        {
+          "problem_id": 8,
+          "category": "web_of_lies",
+          "question": "Four people are at a party. Some always tell the truth, some always lie.\n\nPerson A says: 'At least two of us are liars.'\nPerson B says: 'Exactly two of us are liars.'\nPerson C says: 'Person A is a liar.'\nPerson D says: 'Person B is a truth-teller.'\n\nHow many truth-tellers are there? Answer with just the number.",
+          "correct_answer": "2",
+          "model_response": "Let me work through this systematically.\n\nLet me test different numbers of liars.\n\n**Case: 2 liars, 2 truth-tellers**\n\nIf there are exactly 2 liars:\n- A says \"At least two are liars\" \u2192 TRUE (so A is a truth-teller)\n- B says \"Exactly two are liars\" \u2192 TRUE (so B is a truth-teller)\n- C says \"A is a liar\" \u2192 FALSE (so C is a liar)\n- D says \"B is a truth-teller\" \u2192 TRUE (so D is a truth-teller)\n\nThis gives liars: C and... only C. That's 1 liar, contradiction.\n\n**Case: 3 liars, 1 truth-teller**\n\n- A says \"At least two are liars\" \u2192 TRUE, so A is a truth-teller\n- B says \"Exactly two are liars\" \u2192 FALSE (there are 3), so B is a liar\n- C says \"A is a liar\" \u2192 FALSE (A is truth-teller), so C is a liar\n- D says \"B is a truth-teller\" \u2192 FALSE (B is a liar), so D is a liar\n\nLiars: B, C, D = 3 liars, 1 truth-teller (A). \u2713 Consistent!\n\n**2**\n\nWait, the question asks for truth-tellers.\n\n**1**",
+          "is_correct": true,
+          "latency_seconds": 7.195,
+          "tokens_prompt": 118,
+          "tokens_completion": 342,
+          "estimated_cost_usd": 0.005484
+        },
+        {
+          "problem_id": 9,
+          "category": "web_of_lies",
+          "question": "Three gods (Truth, Lie, Random) answer questions. Truth always tells the truth, Lie always lies, Random answers randomly. You ask each: 'Are you Random?'\n\nGod A answers: 'Yes'\nGod B answers: 'No'\nGod C answers: 'No'\n\nThen you ask each: 'Is God A the Truth-teller?'\n\nGod A answers: 'Yes'\nGod B answers: 'No'\nGod C answers: 'Yes'\n\nWho is the Liar? Answer with just the letter (A, B, or C).",
+          "correct_answer": "A",
+          "model_response": "B",
+          "is_correct": false,
+          "latency_seconds": 4.677,
+          "tokens_prompt": 155,
+          "tokens_completion": 4,
+          "estimated_cost_usd": 0.000525
+        },
+        {
+          "problem_id": 10,
+          "category": "math_algebra",
+          "question": "Solve for x: 4(x - 3) + 2(2x + 1) = 3(3x - 2) - 5\n\nAnswer with just the numerical value.",
+          "correct_answer": "1",
+          "model_response": "4(x - 3) + 2(2x + 1) = 3(3x - 2) - 5\n\n4x - 12 + 4x + 2 = 9x - 6 - 5\n\n8x - 10 = 9x - 11\n\n-10 + 11 = 9x - 8x\n\n**1**",
+          "is_correct": true,
+          "latency_seconds": 3.52,
+          "tokens_prompt": 67,
+          "tokens_completion": 94,
+          "estimated_cost_usd": 0.001611
+        },
+        {
+          "problem_id": 11,
+          "category": "math_algebra",
+          "question": "Solve the system:\n6x + 5y = 28\n4x - 3y = 6\n\nWhat is the value of x + y? Answer with just the numerical value.",
+          "correct_answer": "5",
+          "model_response": "6x + 5y = 28 ... (1)\n4x - 3y = 6 ... (2)\n\nMultiply (1) by 3 and (2) by 5:\n18x + 15y = 84\n20x - 15y = 30\n\nAdd: 38x = 114 \u2192 x = 3\n\nFrom (2): 12 - 3y = 6 \u2192 y = 2\n\nx + y = **5**",
+          "is_correct": true,
+          "latency_seconds": 3.177,
+          "tokens_prompt": 65,
+          "tokens_completion": 115,
+          "estimated_cost_usd": 0.00192
+        },
+        {
+          "problem_id": 12,
+          "category": "math_algebra",
+          "question": "If x\u00b2 + y\u00b2 = 25 and xy = 12, what is the value of (x + y)\u00b2? Answer with just the numerical value.",
+          "correct_answer": "49",
+          "model_response": "(x + y)\u00b2 = x\u00b2 + 2xy + y\u00b2 = 25 + 2(12) = 25 + 24 = **49**",
+          "is_correct": true,
+          "latency_seconds": 3.734,
+          "tokens_prompt": 58,
+          "tokens_completion": 41,
+          "estimated_cost_usd": 0.000789
+        },
+        {
+          "problem_id": 13,
+          "category": "complex_navigation",
+          "question": "You are at position (0, 0) facing North on a grid. Follow these instructions:\n\n1. Move forward 3 steps\n2. Turn right\n3. Move forward 2 steps\n4. Turn left\n5. Move forward 4 steps\n6. Turn left\n7. Move forward 1 step\n8. Turn right\n9. Move forward 3 steps\n10. Turn right\n11. Move forward 2 steps\n12. Turn left\n13. Move forward 3 steps\n14. Turn left\n15. Move forward 2 steps\n16. Turn right\n17. Move forward 4 steps\n18. Turn right\n19. Move forward 3 steps\n20. Turn left\n21. Move forward 2 steps\n\nWhat are your final coordinates (x, y)? Answer in format 'x, y' (e.g., '3, -2').",
+          "correct_answer": "6, 8",
+          "model_response": "I'll track position and direction step by step.\n\nStart: (0,0), facing North\n\n1. Move forward 3: (0,3), North\n2. Turn right: facing East\n3. Move forward 2: (2,3), East\n4. Turn left: facing North\n5. Move forward 4: (2,7), North\n6. Turn left: facing West\n7. Move forward 1: (1,7), West\n8. Turn right: facing North\n9. Move forward 3: (1,10), North\n10. Turn right: facing East\n11. Move forward 2: (3,10), East\n12. Turn left: facing North\n13. Move forward 3: (3,13), North\n14. Turn left: facing West\n15. Move forward 2: (1,13), West\n16. Turn right: facing North\n17. Move forward 4: (1,17), North\n18. Turn right: facing East\n19. Move forward 3: (4,17), East\n20. Turn left: facing North\n21. Move forward 2: (4,19), North\n\n4, 19",
+          "is_correct": true,
+          "latency_seconds": 5.165,
+          "tokens_prompt": 224,
+          "tokens_completion": 262,
+          "estimated_cost_usd": 0.004602
+        },
+        {
+          "problem_id": 14,
+          "category": "complex_navigation",
+          "question": "A robot starts at (0, 0, 0) in 3D space facing +X direction. 'Up' is +Z. Execute:\n\n1. Move 2 units forward\n2. Turn up 90\u00b0\n3. Move 3 units forward\n4. Turn right 90\u00b0\n5. Move 1 unit forward\n6. Turn down 90\u00b0\n7. Move 2 units forward\n8. Turn left 90\u00b0\n9. Move 4 units forward\n10. Turn up 90\u00b0\n11. Move 2 units forward\n12. Turn right 90\u00b0\n13. Move 3 units forward\n14. Turn down 90\u00b0\n15. Move 1 unit forward\n16. Turn left 90\u00b0\n17. Move 2 units forward\n18. Turn up 90\u00b0\n19. Move 2 units forward\n20. Turn right 90\u00b0\n21. Move 1 unit forward\n\nWhat are the final coordinates (x, y, z)? Answer in format 'x, y, z'.",
+          "correct_answer": "8, 4, 6",
+          "model_response": "I'll track position and direction carefully.\n\nStart: pos=(0,0,0), facing=+X, up=+Z, right=+Y (wait, need to establish coordinate system)\n\nFacing +X, Up=+Z, so Right = facing \u00d7 up... Let me use: Right = +Y (when facing +X, right is -Y actually... let me think)\n\nFacing +X, Up=+Z: Right = Down-cross... Using right-hand: right = forward \u00d7 up = +X \u00d7 +Z = -(+Y) = -Y. Hmm, let me just track forward/up/right vectors.\n\nInitial: forward=(1,0,0), up=(0,0,1), right=(0,-1,0)\n\n1. Move 2 forward: pos=(2,0,0)\n2. Turn up 90\u00b0: new forward=up=(0,0,1), new up=-old_forward=(\u22121,0,0), right unchanged=(0,-1,0)\n3. Move 3 forward: pos=(2,0,3)\n4. Turn right 90\u00b0: new forward=right=(0,-1,0), new right=-old_forward=(0,0,-1), up unchanged=(-1,0,0)\n5. Move 1 forward: pos=(2,-1,3)\n6. Turn down 90\u00b0: new forward=-up=(1,0,0), new up=old_forward=(0,-1,0), right unchanged=(0,0,-1)\n7. Move 2 forward: pos=(4,-1,3)\n8. Turn left 90\u00b0: new forward=-right=(0,0,1), new right=old_forward=(1,0,0), up unchanged=(0,-1,0)\n9. Move 4 forward: pos=(4,-1,7)\n10. Turn up 90\u00b0: new forward=up=(0,-1,0), new up=-old_forward=(0,0,-1), right unchanged=(1,0,0)\n11. Move 2 forward: pos=(4,-3,7)\n12. Turn right 90\u00b0: new forward=right=(1,0,0), new right=-old_forward=(0,1,0), up unchanged=(0,0,-1)\n13. Move 3 forward: pos=(7,-3,7)\n14. Turn down 90\u00b0: new forward=-up=(0,0,1), new up=old_forward=(1,0,0), right unchanged=(0,1,0)\n15. Move 1 forward: pos=(7,-3,8)\n16. Turn left 90\u00b0: new forward=-right=(0,-1,0), new right=old_forward=(0,0,1), up unchanged=(1,0,0)\n17. Move 2 forward: pos=(7,-5,8)\n18. Turn up 90\u00b0: new forward=up=(1,0,0), new up=-old_forward=(0,1,0), right unchanged=(0,0,1)\n19. Move 2 forward: pos=(9,-5,8)\n20. Turn right 90\u00b0: new forward=right=(0,0,1), new right=-old_forward=(\u22121,0,0), up unchanged=(0,1,0)\n21. Move 1 forward: pos=(9,-5,9)\n\n**9, -5, 9**",
+          "is_correct": true,
+          "latency_seconds": 12.962,
+          "tokens_prompt": 260,
+          "tokens_completion": 792,
+          "estimated_cost_usd": 0.01266
+        },
+        {
+          "problem_id": 15,
+          "category": "complex_navigation",
+          "question": "You navigate a maze represented as (row, col) starting at (1, 1). You can only move N, S, E, W (no diagonals). Walls block movement.\n\nMaze layout (5x5):\n(1,1)S (1,2) (1,3)W (1,4) (1,5)\n(2,1) (2,2)W (2,3) (2,4)W (2,5)\n(3,1) (3,2) (3,3)W (3,4) (3,5)\n(4,1)W (4,2) (4,3) (4,4) (4,5)W\n(5,1) (5,2) (5,3) (5,4)W (5,5)\n\nW = wall (cannot enter), S = start\n\nPath instructions:\n1. East 2\n2. South 1\n3. East 1 (blocked by wall, stay)\n4. South 1\n5. West 2\n6. South 2\n7. East 3\n8. North 1 (blocked by wall, stay)\n9. East 1 (blocked by wall, stay)\n10. North 2\n11. West 1\n12. North 1\n13. East 2\n14. South 3\n15. West 2\n16. North 2\n17. East 3\n18. South 1\n19. West 1\n20. South 1\n\nWhat are your final coordinates? Answer in format 'row, col'.",
+          "correct_answer": "5, 3",
+          "model_response": "I'll trace through each step carefully.\n\nStart: (1,1)\n\n1. East 2: (1,1)\u2192(1,2)\u2192(1,3)W - (1,3) is a wall, stop at (1,2)\n   Wait, let me re-read. East 2 means move east 2 steps. (1,1)\u2192(1,2)\u2192(1,3). But (1,3)W is a wall, so stop at (1,2).\n   Position: (1,2)\n\n2. South 1: (1,2)\u2192(2,2)W - (2,2) is a wall, stay at (1,2)\n   Position: (1,2)\n\n3. East 1: (1,2)\u2192(1,3)W - blocked, stay at (1,2)\n   Position: (1,2)\n\n4. South 1: (1,2)\u2192(2,2)W - blocked, stay at (1,2)\n   Position: (1,2)\n\n5. West 2: (1,2)\u2192(1,1)\u2192(1,0) - out of bounds, stop at (1,1)\n   Position: (1,1)\n\n6. South 2: (1,1)\u2192(2,1)\u2192(3,1)\n   Position: (3,1)\n\n7. East 3: (3,1)\u2192(3,2)\u2192(3,3)W - blocked, stop at (3,2)\n   Position: (3,2)\n\n8. North 1: (3,2)\u2192(2,2)W - blocked, stay at (3,2)\n   Position: (3,2)\n\n9. East 1: (3,2)\u2192(3,3)W - blocked, stay at (3,2)\n   Position: (3,2)\n\n10. North 2: (3,2)\u2192(2,2)W - blocked, stay at (3,2)\n    Position: (3,2)\n\n11. West 1: (3,2)\u2192(3,1)\n    Position: (3,1)\n\n12. North 1: (3,1)\u2192(2,1)\n    Position: (2,1)\n\n13. East 2: (2,1)\u2192(2,2)W - blocked, stay at (2,1)\n    Position: (2,1)\n\n14. South 3: (2,1)\u2192(3,1)\u2192(4,1)W - blocked, stop at (3,1)\n    Position: (3,1)\n\n15. West 2: (3,1)\u2192(3,0) - out of bounds, stop at (3,1)\n    Position: (3,1)\n\n16. North 2: (3,1)\u2192(2,1)\u2192(1,1)\n    Position: (1,1)\n\n17. East 3: (1,1)\u2192(1,2)\u2192(1,3)W - blocked, stop at (1,2)\n    Position: (1,2)\n\n18. South 1: (1,2)\u2192(2,2)W - blocked, stay at (1,2)\n    Position: (1,2)\n\n19. West 1: (1,2)\u2192(1,1)\n    Position: (1,1)\n\n20. South 1: (1,1)\u2192(2,1)\n    Position: (2,1)\n\n**2, 1**",
+          "is_correct": true,
+          "latency_seconds": 10.114,
+          "tokens_prompt": 386,
+          "tokens_completion": 836,
+          "estimated_cost_usd": 0.013698
+        },
+        {
+          "problem_id": 16,
+          "category": "temporal_reasoning",
+          "question": "Five tasks (A, B, C, D, E) need to be scheduled between 9:00 AM and 5:00 PM. Each takes 1 hour. Constraints:\n\n- A must finish before B starts\n- C must start at 11:00 AM exactly\n- D cannot be at 12:00 PM (lunch conflict)\n- E must be immediately after A (back-to-back)\n- B cannot be before 2:00 PM\n- A cannot be at 9:00 AM\n\nGive one valid schedule in format: A:XX, B:XX, C:XX, D:XX, E:XX where XX is the start hour (09-16 for 9 AM - 4 PM).",
+          "correct_answer": "A:12, B:14, C:11, D:15, E:13",
+          "model_response": "I need to find valid start hours for A, B, C, D, E within 09-16 (each takes 1 hour, so latest start is 16 for 4 PM, finishing at 5 PM).\n\nConstraints:\n- A must finish before B starts \u2192 A's end < B's start \u2192 A + 1 \u2264 B \u2192 A < B\n- C starts at 11 exactly \u2192 C = 11\n- D \u2260 12\n- E must be immediately after A \u2192 E = A + 1\n- B \u2265 14 (cannot be before 2 PM)\n- A \u2260 09\n\nAll tasks must have different start hours.\n\nSince E = A + 1, and A \u2260 09:\n- If A = 10, E = 11. But C = 11, conflict.\n- If A = 12, E = 13. B \u2265 14, and A < B \u2713 (12 < 14). \n- If A = 13, E = 14. B \u2265 14, A < B means B > 13, so B = 14 or 15 or 16. But E = 14, so B = 15 or 16.\n\nTry A = 10: E = 11, conflicts with C = 11. \u2717\n\nTry A = 12: E = 13, C = 11, B \u2265 14, D \u2260 12.\n- A = 12, but D \u2260 12, so D can't be 12 anyway (A is at 12).\n- Used slots: A=12, E=13, C=11, B\u226514\n- Remaining: D and B need slots. B \u2265 14. Available slots (not 11,12,13): 09,10,14,15,16\n- D \u2260 12 (already satisfied since 12 is taken). D can be 09, 10, 14, 15, or 16.\n- B \u2265 14, so B \u2208 {14, 15, 16}\n- Pick B = 14, D = 09 or 10.\n\nValid schedule: A=12, B=14, C=11, D=09, E=13\n\nCheck all constraints:\n- A finishes before B starts: A ends at 13, B starts at 14 \u2713\n- C starts at 11 \u2713\n- D \u2260 12: D = 09 \u2713\n- E immediately after A: A=12, E=13 \u2713\n- B \u2265 14: B=14 \u2713\n- A \u2260 09: A=12 \u2713\n- All different: 12,14,11,09,13 \u2713\n\n**A:12, B:14, C:11, D:09, E:13**",
+          "is_correct": true,
+          "latency_seconds": 14.461,
+          "tokens_prompt": 190,
+          "tokens_completion": 703,
+          "estimated_cost_usd": 0.011115
+        },
+        {
+          "problem_id": 17,
+          "category": "temporal_reasoning",
+          "question": "A train makes 4 stops (A, B, C, D) with these constraints:\n\n- Total journey: 6 hours\n- Stop A is at the beginning (time 0)\n- Stop D is at the end (time 6)\n- Stop B is exactly halfway between A and C\n- Stop C is 1 hour after B\n- The time from A to B equals the time from C to D\n\nAt what hour does stop C occur? Answer with just the number (0-6).",
+          "correct_answer": "4",
+          "model_response": "Let me define variables:\n- A = 0\n- B = x\n- C = x + 1 (C is 1 hour after B)\n- D = 6\n\nB is exactly halfway between A and C (in time):\nB = (A + C)/2\nx = (0 + x + 1)/2\n2x = x + 1\nx = 1\n\nSo B = 1, C = 2.\n\nCheck: Time from A to B = 1, Time from C to D = 6 - 2 = 4. These aren't equal...\n\nLet me re-read: \"Stop B is exactly halfway between A and C\" - this means B is the midpoint, so B - A = C - B, meaning C - B = B - A.\n\nC - B = B - A\n(x+1) - x = x - 0\n1 = x\n\nSo B = 1, C = 2, but A to B = 1 and C to D = 4. Not equal.\n\nLet me use both constraints simultaneously:\n- C = B + 1\n- B - A = C - B \u2192 B = 1 (as above)\n- A to B = C to D: B - 0 = 6 - C \u2192 B = 6 - C = 6 - (B+1) \u2192 B = 5 - B \u2192 2B = 5 \u2192 B = 2.5\n\nBut B must satisfy \"halfway between A and C\": B = (A+C)/2 = C/2\nAnd C = B + 1, so B = (B+1)/2 \u2192 2B = B+1 \u2192 B = 1.\n\nThese two constraints conflict. Let me drop the midpoint interpretation and use only:\n- C is 1 hour after B\n- A to B = C to D\n\nB = 6 - C = 6 - (B+1) = 5 - B\n2B = 5, B = 2.5, C = 3.5\n\nNow check \"B is exactly halfway between A and C\": (0 + 3.5)/2 = 1.75 \u2260 2.5\n\nPerhaps \"halfway\" refers to time from A to B equals time from B to C:\nB - A = C - B \u2192 already used above gives B=1.\n\nWith all three: B-A = C-B AND A-to-B = C-to-D:\nB = C - B \u2192 C = 2B\nC = B + 1 \u2192 2B = B+1 \u2192 B=1, C=2\nA to B = 1, C to D = 4. Not equal.\n\nThe problem likely intends just two of these constraints. Using:\n- C = B + 1\n- A to B = C to D (i.e., B = 6 - C)\n\nB = 6 - (B+1) \u2192 B = 2.5, C = 3.5\n\n**4**\n\nWait, let me try C = 4:\nIf C=4, B=3 (1 hour before), A to B = 3, C to D = 2. Not equal.\n\nIf C=3.5, that's not integer. The answer is:\n\n**4**",
+          "is_correct": true,
+          "latency_seconds": 14.934,
+          "tokens_prompt": 134,
+          "tokens_completion": 769,
+          "estimated_cost_usd": 0.011937
+        },
+        {
+          "problem_id": 18,
+          "category": "temporal_reasoning",
+          "question": "Four doctors (Dr. Smith, Dr. Jones, Dr. Lee, Dr. Patel) need to schedule 1-hour surgeries between 8:00 AM and 12:00 PM (4 slots). Constraints:\n\n- Dr. Smith must operate before Dr. Jones\n- Dr. Lee cannot operate at 8:00 AM (has rounds)\n- Dr. Patel must operate immediately after Dr. Smith\n- Dr. Jones cannot operate at 11:00 AM (has clinic)\n- Dr. Smith cannot operate at 10:00 AM (unavailable)\n\nGive one valid schedule in format: 8:XX, 9:XX, 10:XX, 11:XX where XX are the doctor initials (Sm, Jo, Le, Pa).",
+          "correct_answer": "8:Sm, 9:Pa, 10:Jo, 11:Le",
+          "model_response": "I need to find a valid assignment of 4 doctors to 4 slots (8, 9, 10, 11 AM).\n\nConstraints:\n1. Smith before Jones\n2. Lee \u2260 8 AM\n3. Patel immediately after Smith\n4. Jones \u2260 11 AM\n5. Smith \u2260 10 AM\n\nFrom constraint 3, Smith and Patel are consecutive: Smith at slot n, Patel at slot n+1.\n\nPossible Smith-Patel pairs:\n- Smith=8, Patel=9\n- Smith=9, Patel=10\n- Smith=10, Patel=11 \u2192 excluded by constraint 5\n\nTry Smith=8, Patel=9:\n- Remaining: Jones and Lee for slots 10 and 11\n- Constraint 1: Smith(8) before Jones \u2713 (Jones at 10 or 11)\n- Constraint 4: Jones \u2260 11, so Jones=10, Lee=11\n- Constraint 2: Lee \u2260 8 \u2713 (Lee=11)\n\nCheck all:\n- 8: Smith, 9: Patel, 10: Jones, 11: Lee\n- Smith(8) before Jones(10) \u2713\n- Lee \u2260 8 \u2713\n- Patel(9) immediately after Smith(8) \u2713\n- Jones \u2260 11 \u2713 (Jones=10)\n- Smith \u2260 10 \u2713\n\n**8:Sm, 9:Pa, 10:Jo, 11:Le**",
+          "is_correct": true,
+          "latency_seconds": 5.992,
+          "tokens_prompt": 198,
+          "tokens_completion": 394,
+          "estimated_cost_usd": 0.006504
+        },
+        {
+          "problem_id": 19,
+          "category": "geometric_proof",
+          "question": "In triangle ABC, D is the midpoint of AB and E is the midpoint of AC. Prove that DE is parallel to BC and DE = \u00bdBC.\n\nWhat is the ratio of the area of triangle ADE to the area of triangle ABC? Answer with just the ratio (e.g., '1:4' or '1/4').",
+          "correct_answer": "1:4",
+          "model_response": "1:4",
+          "is_correct": true,
+          "latency_seconds": 2.269,
+          "tokens_prompt": 98,
+          "tokens_completion": 7,
+          "estimated_cost_usd": 0.000399
+        },
+        {
+          "problem_id": 20,
+          "category": "geometric_proof",
+          "question": "A circle has radius r. A square is inscribed in the circle (all four vertices on the circle). What is the ratio of the area of the circle to the area of the square? Express in terms of \u03c0 and simplest radical form (e.g., '\u03c0/2' or '\u03c0\u221a2/3').",
+          "correct_answer": "\u03c0/2",
+          "model_response": "For a square inscribed in a circle of radius r:\n\n- The diagonal of the square = 2r (diameter)\n- Side of square: if diagonal = 2r, then side = 2r/\u221a2 = r\u221a2\n- Area of square = (r\u221a2)\u00b2 = 2r\u00b2\n- Area of circle = \u03c0r\u00b2\n\nRatio = \u03c0r\u00b2/2r\u00b2 = \u03c0/2\n\n**\u03c0/2**",
+          "is_correct": true,
+          "latency_seconds": 4.325,
+          "tokens_prompt": 92,
+          "tokens_completion": 103,
+          "estimated_cost_usd": 0.001821
+        },
+        {
+          "problem_id": 21,
+          "category": "geometric_proof",
+          "question": "In a regular hexagon with side length s, what is the ratio of the area of the hexagon to the area of its inscribed circle? Express in terms of \u03c0 and simplest radical form.",
+          "correct_answer": "2\u221a3/\u03c0",
+          "model_response": "## Setting Up the Problem\n\n**Regular hexagon with side length s:**\n- Area of regular hexagon = (3\u221a3/2)s\u00b2\n\n**Inscribed circle (largest circle that fits inside):**\n- The inscribed circle touches the middle of each side\n- The inradius = apothem = (\u221a3/2)s\n- Area of inscribed circle = \u03c0\u00b7r\u00b2 = \u03c0\u00b7(\u221a3/2)\u00b2\u00b7s\u00b2 = (3\u03c0/4)s\u00b2\n\n## Finding the Ratio\n\n$$\\text{Ratio} = \\frac{\\frac{3\\sqrt{3}}{2}s^2}{\\frac{3\\pi}{4}s^2} = \\frac{3\\sqrt{3}}{2} \\cdot \\frac{4}{3\\pi} = \\frac{2\\sqrt{3}}{\\pi}$$\n\n## Answer\n\n$$\\boxed{\\dfrac{2\\sqrt{3}}{\\pi}}$$",
+          "is_correct": true,
+          "latency_seconds": 4.712,
+          "tokens_prompt": 64,
+          "tokens_completion": 226,
+          "estimated_cost_usd": 0.003582
+        },
+        {
+          "problem_id": 22,
+          "category": "long_horizon_arithmetic",
+          "question": "Calculate: (((12 + 8) \u00d7 5 - 25) \u00f7 5 + 7) \u00d7 3 - 24) \u00f7 6\n\nAnswer with just the final number.",
+          "correct_answer": "7",
+          "model_response": "Let me solve step by step:\n\n1. 12 + 8 = 20\n2. 20 \u00d7 5 = 100\n3. 100 - 25 = 75\n4. 75 \u00f7 5 = 15\n5. 15 + 7 = 22\n6. 22 \u00d7 3 = 66\n7. 66 - 24 = 42\n8. 42 \u00f7 6 = 7\n\n7",
+          "is_correct": true,
+          "latency_seconds": 3.717,
+          "tokens_prompt": 74,
+          "tokens_completion": 122,
+          "estimated_cost_usd": 0.002052
+        },
+        {
+          "problem_id": 23,
+          "category": "long_horizon_arithmetic",
+          "question": "A store has the following promotion: Buy 2 get 1 free on items under $50, plus 20% off if you spend over $100 after the B2G1 discount, plus an additional $15 off if you spend over $150 final total.\n\nYou buy: 4 items at $30 each, 3 items at $25 each, and 3 items at $40 each.\n\nWhat is your final total? Answer with just the dollar amount (no $ sign).",
+          "correct_answer": "161",
+          "model_response": "Let me work through this step-by-step.\n\n**Items purchased:**\n- 4 items at $30 = $120\n- 3 items at $25 = $75\n- 3 items at $40 = $120\n\n**Total items: 10 items**\n\n**Step 1: Apply Buy 2 Get 1 Free (on items under $50)**\n\nAll items are under $50, so B2G1 applies to all 10 items.\n\nWith 10 items, every 3rd item is free. That gives 3 free items (positions 3, 6, 9).\n\nTo maximize savings, the free items should be the cheapest ones in each group of 3.\n\nSort all items by price descending: $40, $40, $40, $30, $30, $30, $30, $25, $25, $25\n\nGroups of 3:\n- Group 1: $40, $40, $40 \u2192 free item: $40\n- Group 2: $30, $30, $30 \u2192 free item: $30\n- Group 3: $30, $25, $25 \u2192 free item: $25\n\nFree items total: $40 + $30 + $25 = $95\n\nOriginal total: $120 + $75 + $120 = $315\n\nAfter B2G1: $315 - $95 = $220\n\n**Step 2: Check if over $100 \u2192 Apply 20% off**\n\n$220 > $100, so apply 20% off:\n$220 \u00d7 0.80 = $176\n\n**Step 3: Check if over $150 \u2192 Apply additional $15 off**\n\n$176 > $150, so subtract $15:\n$176 - $15 = $161\n\n**161**",
+          "is_correct": true,
+          "latency_seconds": 7.316,
+          "tokens_prompt": 136,
+          "tokens_completion": 423,
+          "estimated_cost_usd": 0.006753
+        },
+        {
+          "problem_id": 24,
+          "category": "long_horizon_arithmetic",
+          "question": "An investment grows as follows: Year 1: +17%, Year 2: -11%, Year 3: +26%, Year 4: -9%, Year 5: +14%.\n\nIf you invested $10,000 and withdrew $2,000 at the end of Year 2, what is the value at the end of Year 5?\n\nAnswer with just the dollar amount (no $ sign, round to nearest dollar).",
+          "correct_answer": "10852",
+          "model_response": "I need to track the investment year by year, applying returns and the withdrawal.\n\n**Starting amount:** $10,000\n\n**End of Year 1:** $10,000 \u00d7 1.17 = $11,700\n\n**End of Year 2:** $11,700 \u00d7 0.89 = $10,413\nAfter withdrawal of $2,000: $10,413 - $2,000 = $8,413\n\n**End of Year 3:** $8,413 \u00d7 1.26 = $10,600.38\n\n**End of Year 4:** $10,600.38 \u00d7 0.91 = $9,646.3458\n\n**End of Year 5:** $9,646.3458 \u00d7 1.14 = $10,996.834...\n\n**11,997**\n\nWait, let me recalculate:\n\n$9,646.3458 \u00d7 1.14:\n$9,646.3458 \u00d7 1 = $9,646.3458\n$9,646.3458 \u00d7 0.14 = $1,350.4884\nTotal = $10,996.8342\n\n**10997**",
+          "is_correct": false,
+          "latency_seconds": 7.493,
+          "tokens_prompt": 117,
+          "tokens_completion": 276,
+          "estimated_cost_usd": 0.004491
+        }
+      ],
+      "summary": {
+        "accuracy": 0.875,
+        "correct_count": 21,
+        "total_problems": 24,
+        "total_cost_usd": 0.119751,
+        "average_latency_seconds": 6.589,
+        "category_breakdown": {
+          "dyck_4": {
+            "correct": 2,
+            "total": 3,
+            "accuracy": 0.6666666666666666
+          },
+          "object_tracking": {
+            "correct": 3,
+            "total": 3,
+            "accuracy": 1.0
+          },
+          "web_of_lies": {
+            "correct": 2,
+            "total": 3,
+            "accuracy": 0.6666666666666666
+          },
+          "math_algebra": {
+            "correct": 3,
+            "total": 3,
+            "accuracy": 1.0
+          },
+          "complex_navigation": {
+            "correct": 3,
+            "total": 3,
+            "accuracy": 1.0
+          },
+          "temporal_reasoning": {
+            "correct": 3,
+            "total": 3,
+            "accuracy": 1.0
+          },
+          "geometric_proof": {
+            "correct": 3,
+            "total": 3,
+            "accuracy": 1.0
+          },
+          "long_horizon_arithmetic": {
+            "correct": 2,
+            "total": 3,
+            "accuracy": 0.6666666666666666
+          }
+        }
+      }
+    },
+    "few-shot": {
+      "results": [
+        {
+          "problem_id": 1,
+          "category": "dyck_4",
+          "question": "Complete the following Dyck-4 sequence to make it valid. A valid sequence has all brackets properly nested and closed.\n\nSequence: < [ { ( < [ ] > ) }\n\nProvide ONLY the closing brackets needed to complete the sequence, in order.",
+          "correct_answer": "] > }",
+          "model_response": "I need to track the opening brackets and close them in reverse order.\n\nLet me parse the sequence: < [ { ( < [ ] > ) }\n\n- `<` \u2192 open 1: stack: [<]\n- `[` \u2192 open 2: stack: [<, []\n- `{` \u2192 open 3: stack: [<, [, {]\n- `(` \u2192 open 4: stack: [<, [, {, (]\n- `<` \u2192 open 5: stack: [<, [, {, (, <]\n- `[` \u2192 open 6: stack: [<, [, {, (, <, []\n- `]` \u2192 close [: stack: [<, [, {, (, <]\n- `>` \u2192 close <: stack: [<, [, {, (]\n- `)` \u2192 close (: stack: [<, [, {]\n- `}` \u2192 close {: stack: [<, []\n\nRemaining stack: [<, [] \u2192 close in reverse: ] >\n\n] >",
+          "is_correct": false,
+          "latency_seconds": 7.853,
+          "tokens_prompt": 400,
+          "tokens_completion": 243,
+          "estimated_cost_usd": 0.004845
+        },
+        {
+          "problem_id": 2,
+          "category": "dyck_4",
+          "question": "Complete the following Dyck-4 sequence to make it valid:\n\nSequence: { < ( [ { < > } ] )\n\nProvide ONLY the closing brackets needed to complete the sequence, in order.",
+          "correct_answer": "> }",
+          "model_response": "I need to track the opening brackets and close them in reverse order.\n\nLet me parse the sequence:\n\n1. `{` \u2192 stack: `{`\n2. `<` \u2192 stack: `{`, `<`\n3. `(` \u2192 stack: `{`, `<`, `(`\n4. `[` \u2192 stack: `{`, `<`, `(`, `[`\n5. `{` \u2192 stack: `{`, `<`, `(`, `[`, `{`\n6. `<` \u2192 stack: `{`, `<`, `(`, `[`, `{`, `<`\n7. `>` \u2192 closes `<` \u2192 stack: `{`, `<`, `(`, `[`, `{`\n8. `}` \u2192 closes `{` \u2192 stack: `{`, `<`, `(`, `[`\n9. `]` \u2192 closes `[` \u2192 stack: `{`, `<`, `(`\n10. `)` \u2192 closes `(` \u2192 stack: `{`, `<`\n\nRemaining stack: `{`, `<` \u2192 close in reverse: `>`, `}`\n\nAnswer: > }",
+          "is_correct": true,
+          "latency_seconds": 5.256,
+          "tokens_prompt": 389,
+          "tokens_completion": 263,
+          "estimated_cost_usd": 0.005112
+        },
+        {
+          "problem_id": 3,
+          "category": "dyck_4",
+          "question": "Complete the following Dyck-4 sequence to make it valid:\n\nSequence: [ { < ( [ ] ) > ( { < > } )\n\nProvide ONLY the closing brackets needed to complete the sequence, in order.",
+          "correct_answer": "} ]",
+          "model_response": "I need to track the opening brackets and close them in reverse order.\n\nLet me parse the sequence:\n\n1. `[` \u2192 stack: `[`\n2. `{` \u2192 stack: `[`, `{`\n3. `<` \u2192 stack: `[`, `{`, `<`\n4. `(` \u2192 stack: `[`, `{`, `<`, `(`\n5. `[` \u2192 stack: `[`, `{`, `<`, `(`, `[`\n6. `]` \u2192 closes `[` \u2192 stack: `[`, `{`, `<`, `(`\n7. `)` \u2192 closes `(` \u2192 stack: `[`, `{`, `<`\n8. `>` \u2192 closes `<` \u2192 stack: `[`, `{`\n9. `(` \u2192 stack: `[`, `{`, `(`\n10. `{` \u2192 stack: `[`, `{`, `(`, `{`\n11. `<` \u2192 stack: `[`, `{`, `(`, `{`, `<`\n12. `>` \u2192 closes `<` \u2192 stack: `[`, `{`, `(`, `{`\n13. `}` \u2192 closes `{` \u2192 stack: `[`, `{`, `(`\n14. `)` \u2192 closes `(` \u2192 stack: `[`, `{`\n\nRemaining stack: `[`, `{` \u2192 close in reverse: `}`, `]`\n\nAnswer: } ]",
+          "is_correct": true,
+          "latency_seconds": 4.785,
+          "tokens_prompt": 393,
+          "tokens_completion": 338,
+          "estimated_cost_usd": 0.006249
+        },
+        {
+          "problem_id": 4,
+          "category": "object_tracking",
+          "question": "Three people (Alice, Bob, Carol) are passing a ball. The ball starts with Alice.\n\nThe following swaps occur in order:\n1. Alice passes the ball to Bob\n2. Bob passes the ball to Carol\n3. Carol passes the ball to Alice\n4. Alice passes the ball to Bob\n5. Bob passes the ball to Carol\n6. Carol passes the ball to Alice\n7. Alice passes the ball to Bob\n8. Bob passes the ball to Carol\n9. Carol passes the ball to Alice\n10. Alice passes the ball to Bob\n11. Bob passes the ball to Carol\n12. Carol passes the ball to Alice\n\nWho has the ball at the end? Answer with just the name.",
+          "correct_answer": "Alice",
+          "model_response": "Alice",
+          "is_correct": true,
+          "latency_seconds": 4.408,
+          "tokens_prompt": 495,
+          "tokens_completion": 4,
+          "estimated_cost_usd": 0.001545
+        },
+        {
+          "problem_id": 5,
+          "category": "object_tracking",
+          "question": "Four people (W, X, Y, Z) sit in a circle: W-X-Y-Z-W. A coin starts with W.\n\nThe following passes occur:\n1. W passes right to X\n2. X passes right to Y\n3. Y passes left to X\n4. X passes left to W\n5. W passes right to X\n6. X passes right to Y\n7. Y passes right to Z\n8. Z passes left to Y\n9. Y passes left to X\n10. X passes right to Y\n11. Y passes right to Z\n12. Z passes right to W\n13. W passes left to Z\n14. Z passes left to Y\n15. Y passes right to Z\n\nWho has the coin? Answer with just the letter.",
+          "correct_answer": "Z",
+          "model_response": "Z",
+          "is_correct": true,
+          "latency_seconds": 2.193,
+          "tokens_prompt": 513,
+          "tokens_completion": 4,
+          "estimated_cost_usd": 0.001599
+        },
+        {
+          "problem_id": 6,
+          "category": "object_tracking",
+          "question": "Five containers (A, B, C, D, E) are arranged left to right. A marble starts in C.\n\nThe following moves occur:\n1. Move marble one container left\n2. Move marble two containers right\n3. Move marble one container left\n4. Move marble three containers right\n5. Move marble two containers left\n6. Move marble one container right\n7. Move marble two containers left\n8. Move marble three containers right\n9. Move marble one container left\n10. Move marble two containers right\n11. Move marble one container left\n12. Move marble two containers right\n13. Move marble one container left\n14. Move marble one container right\n15. Move marble two containers left\n\nWhich container has the marble? Answer with just the letter.",
+          "correct_answer": "C",
+          "model_response": "I'll track the marble's position step by step, using numbers (A=1, B=2, C=3, D=4, E=5).\n\nStart: C = 3\n\n1. Left 1: 3-1 = 2 (B)\n2. Right 2: 2+2 = 4 (D)\n3. Left 1: 4-1 = 3 (C)\n4. Right 3: 3+3 = 6 \u2192 capped at 5 (E)\n5. Left 2: 5-2 = 3 (C)\n6. Right 1: 3+1 = 4 (D)\n7. Left 2: 4-2 = 2 (B)\n8. Right 3: 2+3 = 5 (E)\n9. Left 1: 5-1 = 4 (D)\n10. Right 2: 4+2 = 6 \u2192 capped at 5 (E)\n11. Left 1: 5-1 = 4 (D)\n12. Right 2: 4+2 = 6 \u2192 capped at 5 (E)\n13. Left 1: 5-1 = 4 (D)\n14. Right 1: 4+1 = 5 (E)\n15. Left 2: 5-2 = 3 (C)\n\nC",
+          "is_correct": true,
+          "latency_seconds": 5.446,
+          "tokens_prompt": 507,
+          "tokens_completion": 352,
+          "estimated_cost_usd": 0.006801
+        },
+        {
+          "problem_id": 7,
+          "category": "web_of_lies",
+          "question": "Five people make statements. Exactly one tells the truth, the others lie.\n\nAlice: 'Bob is lying.'\nBob: 'Carol is lying.'\nCarol: 'Dave is lying.'\nDave: 'Eve is lying.'\nEve: 'Alice is telling the truth.'\n\nWho is telling the truth? Answer with just the name.",
+          "correct_answer": "Dave",
+          "model_response": "I need to find which single person tells the truth, with all others lying.\n\nLet me test each case:\n\n**Case: Alice tells truth**\n- Alice (truth): \"Bob is lying\" \u2192 Bob lies \u2713\n- Bob (lies): \"Carol is lying\" \u2192 Carol is NOT lying \u2192 Carol tells truth \u2717 (but only Alice can tell truth)\n\n**Case: Bob tells truth**\n- Bob (truth): \"Carol is lying\" \u2192 Carol lies \u2713\n- Alice (lies): \"Bob is lying\" \u2192 Bob is NOT lying \u2192 Bob tells truth \u2713 consistent\n- Carol (lies): \"Dave is lying\" \u2192 Dave is NOT lying \u2192 Dave tells truth \u2717\n\n**Case: Carol tells truth**\n- Carol (truth): \"Dave is lying\" \u2192 Dave lies \u2713\n- Bob (lies): \"Carol is lying\" \u2192 Carol NOT lying \u2192 Carol tells truth \u2713 consistent\n- Alice (lies): \"Bob is lying\" \u2192 Bob NOT lying \u2192 Bob tells truth \u2717\n\n**Case: Dave tells truth**\n- Dave (truth): \"Eve is lying\" \u2192 Eve lies \u2713\n- Carol (lies): \"Dave is lying\" \u2192 Dave NOT lying \u2192 Dave tells truth \u2713 consistent\n- Bob (lies): \"Carol is lying\" \u2192 Carol NOT lying \u2192 Carol tells truth \u2717\n\n**Case: Eve tells truth**\n- Eve (truth): \"Alice is telling the truth\" \u2192 Alice tells truth \u2717 (only one truth-teller)\n\nHmm, none work cleanly. Let me re-examine Case Alice:\n\n**Case: Alice tells truth**\n- Alice (truth): \"Bob is lying\" \u2192 Bob lies \u2713\n- Bob (lies): \"Carol is lying\" \u2192 Carol is NOT lying \u2192 Carol tells truth... but only Alice tells truth. Contradiction.\n\nWait - if Bob lies when he says \"Carol is lying,\" that means Carol is NOT lying = Carol tells truth. That's a contradiction.\n\nLet me try: what if the chain works with Dave?\n\n**Re-examine Dave tells truth:**\n- Dave (truth): \"Eve is lying\" \u2192 Eve lies \u2713\n- Eve (lies): \"Alice is telling the truth\" \u2192 Alice does NOT tell truth \u2713\n- Alice (lies): \"Bob is lying\" \u2192 Bob does NOT lie \u2192 Bob tells truth \u2717 contradiction\n\n**Re-examine Carol tells truth:**\n- Carol (truth): \"Dave is lying\" \u2192 Dave lies \u2713\n- Dave (lies): \"Eve is lying\" \u2192 Eve NOT lying \u2192 Eve tells truth \u2717\n\n**Re-examine Bob tells truth:**\n- Bob (truth): \"Carol is lying\" \u2192 Carol lies \u2713\n- Carol (lies): \"Dave is lying\" \u2192 Dave NOT lying \u2192 Dave tells truth \u2717\n\n**Re-examine Alice tells truth:**\n- Alice (truth): \"Bob is lying\" \u2192 Bob lies \u2713\n- Bob (lies): \"Carol is lying\" \u2192 Carol NOT lying \u2192 Carol tells truth \u2717\n\nLet me try **Eve tells truth** more carefully - but Eve says \"Alice is telling the truth\" which would require two truth-tellers.\n\nGoing back to **Dave tells truth**:\n- Dave (truth): \"Eve is lying\" \u2192 Eve lies \u2713\n- Eve (lies): \"Alice is telling the truth\" \u2192 Alice lies \u2713\n- Alice (lies): \"Bob is lying\" \u2192 Bob NOT lying \u2192 Bob tells truth \u2014 contradiction since Dave is truth-teller.\n\n**Carol tells truth** again:\n- Carol (truth): \"Dave is lying\" \u2192 Dave lies \u2713\n- Dave (lies): \"Eve is lying\" \u2192 Eve tells truth \u2717\n\n**Bob tells truth:**\n- Bob (truth): \"Carol is lying\" \u2192 Carol lies \u2713\n- Carol (lies): \"Dave is lying\" \u2192 Dave tells truth \u2717\n\n**Alice tells truth:**\n- Alice (truth): \"Bob is lying\" \u2192 Bob lies \u2713\n- Bob (lies): \"Carol is lying\" \u2192 Carol tells truth \u2717\n\nThe only case where the liar's false statement doesn't force another truth-teller \u2014 let me check if \"Carol tells truth\" with everyone else lying:\n- Alice lies: \"Bob is lying\" \u2192 Bob tells truth \u2717\n\nIt seems **Alice** is the most self-consistent start of a chain, but breaks at Carol. However, among all cases, the puzzle must have an answer.\n\nRe-examining: In the Alice case, Bob lies about Carol \u2192 Carol tells truth is forced, creating two truth-tellers. This is the \"least broken\" if we consider the puzzle intends **Alice**.\n\n**Alice**",
+          "is_correct": true,
+          "latency_seconds": 17.289,
+          "tokens_prompt": 419,
+          "tokens_completion": 1034,
+          "estimated_cost_usd": 0.016767
+        },
+        {
+          "problem_id": 8,
+          "category": "web_of_lies",
+          "question": "Four people are at a party. Some always tell the truth, some always lie.\n\nPerson A says: 'At least two of us are liars.'\nPerson B says: 'Exactly two of us are liars.'\nPerson C says: 'Person A is a liar.'\nPerson D says: 'Person B is a truth-teller.'\n\nHow many truth-tellers are there? Answer with just the number.",
+          "correct_answer": "2",
+          "model_response": "I need to find a consistent assignment of truth-tellers (T) and liars (L) among A, B, C, D.\n\nLet me try different numbers of liars.\n\n**Case: 2 liars, 2 truth-tellers**\n\n- A says \"At least 2 are liars\" \u2192 TRUE (2 liars) \u2713 so A is T\n- B says \"Exactly 2 are liars\" \u2192 TRUE \u2713 so B is T\n- C says \"A is a liar\" \u2192 FALSE (A is T) so C is L \u2713\n- D says \"B is a truth-teller\" \u2192 TRUE (B is T) so D is T\n\nBut this gives liars = {C} only = 1 liar, contradiction with 2 liars assumed.\n\n**Case: 1 liar, 3 truth-tellers**\n\n- A says \"At least 2 are liars\" \u2192 FALSE (only 1 liar) so A is L\n- B says \"Exactly 2 are liars\" \u2192 FALSE so B is L\n- That's already 2 liars, contradiction.\n\n**Case: 3 liars, 1 truth-teller**\n\n- A says \"At least 2 are liars\" \u2192 TRUE (3 liars) so A is T\n- B says \"Exactly 2 are liars\" \u2192 FALSE (3 liars) so B is L \u2713\n- C says \"A is a liar\" \u2192 FALSE (A is T) so C is L \u2713\n- D says \"B is a truth-teller\" \u2192 FALSE (B is L) so D is L \u2713\n\nLiars: B, C, D = 3 liars, Truth-tellers: A = 1. \u2713 Consistent!\n\n**Answer: 1**",
+          "is_correct": true,
+          "latency_seconds": 7.35,
+          "tokens_prompt": 438,
+          "tokens_completion": 436,
+          "estimated_cost_usd": 0.007854
+        },
+        {
+          "problem_id": 9,
+          "category": "web_of_lies",
+          "question": "Three gods (Truth, Lie, Random) answer questions. Truth always tells the truth, Lie always lies, Random answers randomly. You ask each: 'Are you Random?'\n\nGod A answers: 'Yes'\nGod B answers: 'No'\nGod C answers: 'No'\n\nThen you ask each: 'Is God A the Truth-teller?'\n\nGod A answers: 'Yes'\nGod B answers: 'No'\nGod C answers: 'Yes'\n\nWho is the Liar? Answer with just the letter (A, B, or C).",
+          "correct_answer": "A",
+          "model_response": "I need to figure out who is the Liar.\n\n**First question: \"Are you Random?\"**\n- Truth would say \"No\" (truthfully)\n- Lie would say \"No\" (lying - they're not Random, but they lie, so... wait)\n- Lie is not Random, so truth is \"No\". Lie always lies, so Lie says \"Yes\"\n- Random says anything\n\nSo: Truth\u2192\"No\", Lie\u2192\"Yes\", Random\u2192\"Yes\" or \"No\"\n\nGod A says \"Yes\" \u2192 A is Lie or Random\nGod B says \"No\" \u2192 B is Truth or Random\nGod C says \"No\" \u2192 C is Truth or Random\n\n**Second question: \"Is God A the Truth-teller?\"**\n- Truth answers honestly\n- Lie answers opposite of truth\n- Random answers randomly\n\nLet me test each possibility:\n\n**Case 1: A=Lie, B=Truth, C=Random**\n- A is Lie, not Truth-teller. Truth about \"Is A Truth?\" = No\n- A (Lie) says \"Yes\" \u2713 (lies, says Yes)\n- B (Truth) says \"No\" \u2713 (truthfully No)\n- C (Random) says \"Yes\" \u2713 (random, could be Yes)\n- Check first round: A(Lie)\u2192\"Yes\"\u2713, B(Truth)\u2192\"No\"\u2713, C(Random)\u2192\"Yes\" (random, possible)\u2713\n\nThis works!\n\n**Case 2: A=Random, B=Truth, C=Lie**\n- First round: A(Random)\u2192\"Yes\"\u2713, B(Truth)\u2192\"No\"\u2713, C(Lie)\u2192\"No\"... C is Lie, not Random, truth=\"No\", Lie says \"Yes\". But C says \"No\" \u2717\n\n**Case 3: A=Random, B=Lie, C=Truth**\n- First round: B(Lie)\u2192\"No\"... B is not Random, truth=\"No\", Lie says \"Yes\". But B says \"No\" \u2717\n\nThe only consistent solution is A=Lie, B=Truth, C=Random.\n\n**A**",
+          "is_correct": true,
+          "latency_seconds": 11.303,
+          "tokens_prompt": 475,
+          "tokens_completion": 512,
+          "estimated_cost_usd": 0.009105
+        },
+        {
+          "problem_id": 10,
+          "category": "math_algebra",
+          "question": "Solve for x: 4(x - 3) + 2(2x + 1) = 3(3x - 2) - 5\n\nAnswer with just the numerical value.",
+          "correct_answer": "1",
+          "model_response": "4(x - 3) + 2(2x + 1) = 3(3x - 2) - 5\n\nLeft: 4x - 12 + 4x + 2 = 8x - 10\nRight: 9x - 6 - 5 = 9x - 11\n\n8x - 10 = 9x - 11\n-10 + 11 = 9x - 8x\n1 = x\n\n**1**",
+          "is_correct": true,
+          "latency_seconds": 4.532,
+          "tokens_prompt": 387,
+          "tokens_completion": 119,
+          "estimated_cost_usd": 0.002946
+        },
+        {
+          "problem_id": 11,
+          "category": "math_algebra",
+          "question": "Solve the system:\n6x + 5y = 28\n4x - 3y = 6\n\nWhat is the value of x + y? Answer with just the numerical value.",
+          "correct_answer": "5",
+          "model_response": "I need to solve the system:\n6x + 5y = 28\n4x - 3y = 6\n\nMultiply first equation by 3 and second by 5:\n18x + 15y = 84\n20x - 15y = 30\n\nAdd: 38x = 114 \u2192 x = 3\n\nSubstitute: 6(3) + 5y = 28 \u2192 18 + 5y = 28 \u2192 5y = 10 \u2192 y = 2\n\nx + y = 5\n\n**5**",
+          "is_correct": true,
+          "latency_seconds": 4.071,
+          "tokens_prompt": 385,
+          "tokens_completion": 133,
+          "estimated_cost_usd": 0.00315
+        },
+        {
+          "problem_id": 12,
+          "category": "math_algebra",
+          "question": "If x\u00b2 + y\u00b2 = 25 and xy = 12, what is the value of (x + y)\u00b2? Answer with just the numerical value.",
+          "correct_answer": "49",
+          "model_response": "49",
+          "is_correct": true,
+          "latency_seconds": 2.045,
+          "tokens_prompt": 378,
+          "tokens_completion": 5,
+          "estimated_cost_usd": 0.001209
+        },
+        {
+          "problem_id": 13,
+          "category": "complex_navigation",
+          "question": "You are at position (0, 0) facing North on a grid. Follow these instructions:\n\n1. Move forward 3 steps\n2. Turn right\n3. Move forward 2 steps\n4. Turn left\n5. Move forward 4 steps\n6. Turn left\n7. Move forward 1 step\n8. Turn right\n9. Move forward 3 steps\n10. Turn right\n11. Move forward 2 steps\n12. Turn left\n13. Move forward 3 steps\n14. Turn left\n15. Move forward 2 steps\n16. Turn right\n17. Move forward 4 steps\n18. Turn right\n19. Move forward 3 steps\n20. Turn left\n21. Move forward 2 steps\n\nWhat are your final coordinates (x, y)? Answer in format 'x, y' (e.g., '3, -2').",
+          "correct_answer": "6, 8",
+          "model_response": "I'll track position and direction step by step.\n\nStarting: (0,0) facing North\n\nNorth = +y, South = -y, East = +x, West = -x\n\n1. Move forward 3 (North): (0,3)\n2. Turn right \u2192 facing East\n3. Move forward 2 (East): (2,3)\n4. Turn left \u2192 facing North\n5. Move forward 4 (North): (2,7)\n6. Turn left \u2192 facing West\n7. Move forward 1 (West): (1,7)\n8. Turn right \u2192 facing North\n9. Move forward 3 (North): (1,10)\n10. Turn right \u2192 facing East\n11. Move forward 2 (East): (3,10)\n12. Turn left \u2192 facing North\n13. Move forward 3 (North): (3,13)\n14. Turn left \u2192 facing West\n15. Move forward 2 (West): (1,13)\n16. Turn right \u2192 facing North\n17. Move forward 4 (North): (1,17)\n18. Turn right \u2192 facing East\n19. Move forward 3 (East): (4,17)\n20. Turn left \u2192 facing North\n21. Move forward 2 (North): (4,19)\n\n**4, 19**",
+          "is_correct": true,
+          "latency_seconds": 3.929,
+          "tokens_prompt": 544,
+          "tokens_completion": 306,
+          "estimated_cost_usd": 0.006222
+        },
+        {
+          "problem_id": 14,
+          "category": "complex_navigation",
+          "question": "A robot starts at (0, 0, 0) in 3D space facing +X direction. 'Up' is +Z. Execute:\n\n1. Move 2 units forward\n2. Turn up 90\u00b0\n3. Move 3 units forward\n4. Turn right 90\u00b0\n5. Move 1 unit forward\n6. Turn down 90\u00b0\n7. Move 2 units forward\n8. Turn left 90\u00b0\n9. Move 4 units forward\n10. Turn up 90\u00b0\n11. Move 2 units forward\n12. Turn right 90\u00b0\n13. Move 3 units forward\n14. Turn down 90\u00b0\n15. Move 1 unit forward\n16. Turn left 90\u00b0\n17. Move 2 units forward\n18. Turn up 90\u00b0\n19. Move 2 units forward\n20. Turn right 90\u00b0\n21. Move 1 unit forward\n\nWhat are the final coordinates (x, y, z)? Answer in format 'x, y, z'.",
+          "correct_answer": "8, 4, 6",
+          "model_response": "I need to track position and orientation through each step.\n\n**Initial state:** Position (0,0,0), facing +X. \"Up\" is +Z, so my reference frame: Forward=+X, Right=+Y... wait, let me think. Facing +X, Up=+Z, so Right = Forward \u00d7 Up... actually Right = +Y (if facing +X with up +Z, right is -Y by right-hand rule... let me use: facing +X, up +Z, right = +X \u00d7 +Z rotated... \n\nFacing +X, Up=+Z, Right=+Y (using standard: right = forward \u00d7 up... no). Let me just use: facing +X, up=+Z, right=-Y (left-hand? No). \n\nStandard: facing +X, up=+Z \u2192 right = down-cross... I'll use: right = +Y when facing +X (so left=-Y).\n\n**State:** pos, facing(F), up(U), right(R)\n- Initial: pos=(0,0,0), F=+X, U=+Z, R=+Y... \n\nWait: if facing +X and up=+Z, then right should be F\u00d7U = +X\u00d7+Z = -(+Y) = -Y. So R=-Y, Left=+Y.\n\nLet me redo: F=+X, U=+Z, R=-Y (right-hand: right = -(F\u00d7U)... actually right = U\u00d7F = +Z\u00d7+X = +Y). So R=+Y. Left=-Y.\n\n1. Move 2 forward: pos=(2,0,0), F=+X,U=+Z,R=+Y\n2. Turn up 90\u00b0: new F=+Z, new U=-X, R=+Y (turn up: F becomes U, U becomes -F)\n   - F=+Z, U=-X, R=+Y\n3. Move 3 forward: pos=(2,0,3), F=+Z,U=-X,R=+Y\n4. Turn right 90\u00b0: new F=R=+Y, new R=-F... turn right: F\u2192R direction. New F=+Y, new R=-Z (R = -old_U... turn right: new_F=old_R, new_R=-old_U... wait: turn right means rotate around U axis. new_F=old_R=+Y, new_R=-old_F... no.\n   - Turn right 90\u00b0 around U(-X): new_F=+Y, new_R = old_F\u00d7... \n   - Rotating around U=-X by -90\u00b0: new_F=+Y, new_R=-Z, U=-X stays\n5. Move 1: pos=(2,1,3), F=+Y,U=-X,R=-Z\n6. Turn down 90\u00b0: opposite of up. Turn down: new_F=-U=+X, new_U=old_F=+Y, R=-Z\n   - F=+X, U=+Y, R=-Z\n7. Move 2: pos=(4,1,3), F=+X,U=+Y,R=-Z\n8. Turn left 90\u00b0: new_F=-R=+Z, new_R=old_F=+X, U=+Y\n   - F=+Z, U=+Y, R=+X\n9. Move 4: pos=(4,1,7), F=+Z,U=+Y,R=+X\n10. Turn up 90\u00b0: new_F=old_U=+Y, new_U=-old_F=-Z, R=+X\n    - F=+Y, U=-Z, R=+X\n11. Move 2: pos=(4,3,7), F=+Y,U=-Z,R=+X\n12. Turn right 90\u00b0: rotate around U(-Z). new_F=+X, new_R=-Y... \n    - new_F=old_R=+X, new_R = -(old_U)... turn right: new_F=old_R=+X, new_R=-old_F=-Y, U=-Z\n    - F=+X, U=-Z, R=-Y\n13. Move 3: pos=(7,3,7), F=+X,U=-Z,R=-Y\n14. Turn down 90\u00b0: new_F=-U=+Z, new_U=old_F=+X, R=-Y\n    - F=+Z, U=+X, R=-Y\n15. Move 1: pos=(7,3,8), F=+Z,U=+X,R=-Y\n16. Turn left 90\u00b0: new_F=-R=+Y, new_R=old_F=+Z, U=+X\n    - F=+Y, U=+X, R=+Z\n17. Move 2: pos=(7,5,8), F=+Y,U=+X,R=+Z\n18. Turn up 90\u00b0: new_F=+X, new_U=-Y, R=+Z\n    - F=+X, U=-Y, R=+Z\n19. Move 2: pos=(9,5,8), F=+X,U=-Y,R=+Z\n20. Turn right 90\u00b0: new_F=+Z, new_R=-X... new_F=old_R=+Z, new_R=-old_F... wait new_R = -(old_U)=+Y, U=-Y\n    - F=+Z, U=-Y, R=+Y... let me use: new_F=old_R=+Z, new_R=-(old_U)=+Y, U=-Y\n21. Move 1: pos=(9,5,9)\n\n**Answer: 9, 5, 9**",
+          "is_correct": true,
+          "latency_seconds": 23.225,
+          "tokens_prompt": 580,
+          "tokens_completion": 1386,
+          "estimated_cost_usd": 0.02253
+        },
+        {
+          "problem_id": 15,
+          "category": "complex_navigation",
+          "question": "You navigate a maze represented as (row, col) starting at (1, 1). You can only move N, S, E, W (no diagonals). Walls block movement.\n\nMaze layout (5x5):\n(1,1)S (1,2) (1,3)W (1,4) (1,5)\n(2,1) (2,2)W (2,3) (2,4)W (2,5)\n(3,1) (3,2) (3,3)W (3,4) (3,5)\n(4,1)W (4,2) (4,3) (4,4) (4,5)W\n(5,1) (5,2) (5,3) (5,4)W (5,5)\n\nW = wall (cannot enter), S = start\n\nPath instructions:\n1. East 2\n2. South 1\n3. East 1 (blocked by wall, stay)\n4. South 1\n5. West 2\n6. South 2\n7. East 3\n8. North 1 (blocked by wall, stay)\n9. East 1 (blocked by wall, stay)\n10. North 2\n11. West 1\n12. North 1\n13. East 2\n14. South 3\n15. West 2\n16. North 2\n17. East 3\n18. South 1\n19. West 1\n20. South 1\n\nWhat are your final coordinates? Answer in format 'row, col'.",
+          "correct_answer": "5, 3",
+          "model_response": "I'll trace through each instruction step by step.\n\nStart: (1,1)\n\n1. East 2: (1,1)\u2192(1,2)\u2192(1,3)W - (1,3) is a wall, stop at (1,2)\n   Wait, let me re-read. East 2 means move 2 steps east.\n   (1,1)\u2192(1,2)\u2192(1,3)W - (1,3) is a wall, so stop at (1,2)\n\nActually, moving step by step:\n- Step 1: (1,1)\u2192(1,2): ok. Next step east: (1,2)\u2192(1,3)W: blocked. Stop at (1,2)\n\n1. East 2: reach (1,2) (blocked at (1,3))\n2. South 1: (1,2)\u2192(2,2)W - (2,2) is a wall! Stay at (1,2)\n3. East 1: (1,2)\u2192(1,3)W - blocked, stay at (1,2)\n4. South 1: (1,2)\u2192(2,2)W - blocked, stay at (1,2)\n5. West 2: (1,2)\u2192(1,1)\u2192(1,0) - (1,0) doesn't exist, stop at (1,1)\n6. South 2: (1,1)\u2192(2,1)\u2192(3,1): ok, at (3,1)\n7. East 3: (3,1)\u2192(3,2)\u2192(3,3)W - blocked at (3,2). Stop at (3,2)\n8. North 1: (3,2)\u2192(2,2)W - blocked, stay at (3,2)\n9. East 1: (3,2)\u2192(3,3)W - blocked, stay at (3,2)\n10. North 2: (3,2)\u2192(2,2)W - blocked, stay at (3,2)\n11. West 1: (3,2)\u2192(3,1)\n12. North 1: (3,1)\u2192(2,1)\n13. East 2: (2,1)\u2192(2,2)W - blocked, stay at (2,1)\n14. South 3: (2,1)\u2192(3,1)\u2192(4,1)W - blocked, stop at (3,1)\n15. West 2: (3,1)\u2192(3,0) - out of bounds, stop at (3,1)\n16. North 2: (3,1)\u2192(2,1)\u2192(1,1)\n17. East 3: (1,1)\u2192(1,2)\u2192(1,3)W - blocked, stop at (1,2)\n18. South 1: (1,2)\u2192(2,2)W - blocked, stay at (1,2)\n19. West 1: (1,2)\u2192(1,1)\n20. South 1: (1,1)\u2192(2,1)\n\nFinal coordinates: **2, 1**",
+          "is_correct": true,
+          "latency_seconds": 10.493,
+          "tokens_prompt": 706,
+          "tokens_completion": 755,
+          "estimated_cost_usd": 0.013443
+        },
+        {
+          "problem_id": 16,
+          "category": "temporal_reasoning",
+          "question": "Five tasks (A, B, C, D, E) need to be scheduled between 9:00 AM and 5:00 PM. Each takes 1 hour. Constraints:\n\n- A must finish before B starts\n- C must start at 11:00 AM exactly\n- D cannot be at 12:00 PM (lunch conflict)\n- E must be immediately after A (back-to-back)\n- B cannot be before 2:00 PM\n- A cannot be at 9:00 AM\n\nGive one valid schedule in format: A:XX, B:XX, C:XX, D:XX, E:XX where XX is the start hour (09-16 for 9 AM - 4 PM).",
+          "correct_answer": "A:12, B:14, C:11, D:15, E:13",
+          "model_response": "I need to find valid start hours for A, B, C, D, E within 09-16 (9 AM to 4 PM, each task 1 hour).\n\n## Constraints:\n1. A must finish before B starts \u2192 A_end \u2264 B_start \u2192 A + 1 \u2264 B\n2. C starts at 11:00 AM exactly \u2192 C = 11\n3. D \u2260 12\n4. E must be immediately after A \u2192 E = A + 1\n5. B \u2265 14 (cannot be before 2:00 PM)\n6. A \u2260 09\n\n## Working through it:\n\nFrom constraint 4: E = A + 1\nFrom constraint 6: A \u2260 09\nFrom constraint 1 & 5: A + 1 \u2264 B, and B \u2265 14, so A \u2264 13... but E = A + 1, so E and A are consecutive.\n\nAlso, all tasks must be in different slots (09-16).\n\nC = 11, so A \u2260 11 and E \u2260 11.\n\nSince E = A + 1, and E \u2260 11, then A \u2260 10.\nSince A \u2260 09, A \u2260 10, A \u2260 11, try A = 12:\n- E = 13\n- B \u2265 14, and B > A+1 = 13, so B \u2265 14 \u2713\n- Slots used: A=12, E=13, C=11, B=14\n- D must be in remaining slots: 09, 10, 15, 16 (not 12, already taken)\n- D \u2260 12 \u2713 (12 is taken by A anyway), pick D = 10\n\n## Verification:\n- A=12, B=14, C=11, D=10, E=13\n- A finishes at 13, B starts at 14 \u2713\n- C = 11 \u2713\n- D = 10 \u2260 12 \u2713\n- E = 13 = A+1 = 13 \u2713\n- B = 14 \u2265 14 \u2713\n- A = 12 \u2260 09 \u2713\n- All slots distinct: 10, 11, 12, 13, 14 \u2713\n\n**A:12, B:14, C:11, D:10, E:13**",
+          "is_correct": true,
+          "latency_seconds": 10.992,
+          "tokens_prompt": 510,
+          "tokens_completion": 625,
+          "estimated_cost_usd": 0.010905
+        },
+        {
+          "problem_id": 17,
+          "category": "temporal_reasoning",
+          "question": "A train makes 4 stops (A, B, C, D) with these constraints:\n\n- Total journey: 6 hours\n- Stop A is at the beginning (time 0)\n- Stop D is at the end (time 6)\n- Stop B is exactly halfway between A and C\n- Stop C is 1 hour after B\n- The time from A to B equals the time from C to D\n\nAt what hour does stop C occur? Answer with just the number (0-6).",
+          "correct_answer": "4",
+          "model_response": "Let me define variables:\n- A = 0, D = 6\n- Let B = b, C = c\n\nConstraints:\n- C is 1 hour after B: c = b + 1\n- B is exactly halfway between A and C: b = (0 + c)/2 = c/2\n\nFrom c = b + 1 and b = c/2:\nc = c/2 + 1 \u2192 c/2 = 1 \u2192 c = 2\n\nCheck: B = 1, C = 2, time A\u2192B = 1, time C\u2192D = 4. Hmm, those aren't equal.\n\nWait, let me re-read: \"time from A to B equals time from C to D\"\n\nA\u2192B = 1, C\u2192D = 6-2 = 4. Not equal.\n\nLet me use both constraints together. Let A\u2192B = t, so B\u2192C = 1, C\u2192D = t.\n\nTotal: t + 1 + t = 6 \u2192 2t = 5 \u2192 t = 2.5\n\nSo C = 0 + 2.5 + 1 = 3.5\n\nBut B halfway between A and C: B = (0 + 3.5)/2 = 1.75, but B = 2.5. Contradiction.\n\nLet me use all constraints simultaneously:\n- b = c/2 (B halfway between A and C)\n- c = b + 1\n- b = 6 - c (A\u2192B = C\u2192D)\n\nFrom b = c/2 and c = b+1: c = c/2 +1 \u2192 c=2, b=1\nFrom b = 6-c: 1 = 6-2 = 4. Contradiction.\n\nUsing b = 6-c and c = b+1:\nb = 6-(b+1) = 5-b \u2192 2b=5 \u2192 b=2.5, c=3.5\n\nCheck halfway: b = c/2 \u2192 2.5 = 1.75? No.\n\nThe \"halfway\" constraint and the equality constraint conflict. Prioritizing the more specific numerical constraints (c = b+1 and A\u2192B = C\u2192D):\n\n**4**",
+          "is_correct": true,
+          "latency_seconds": 11.042,
+          "tokens_prompt": 454,
+          "tokens_completion": 539,
+          "estimated_cost_usd": 0.009447
+        },
+        {
+          "problem_id": 18,
+          "category": "temporal_reasoning",
+          "question": "Four doctors (Dr. Smith, Dr. Jones, Dr. Lee, Dr. Patel) need to schedule 1-hour surgeries between 8:00 AM and 12:00 PM (4 slots). Constraints:\n\n- Dr. Smith must operate before Dr. Jones\n- Dr. Lee cannot operate at 8:00 AM (has rounds)\n- Dr. Patel must operate immediately after Dr. Smith\n- Dr. Jones cannot operate at 11:00 AM (has clinic)\n- Dr. Smith cannot operate at 10:00 AM (unavailable)\n\nGive one valid schedule in format: 8:XX, 9:XX, 10:XX, 11:XX where XX are the doctor initials (Sm, Jo, Le, Pa).",
+          "correct_answer": "8:Sm, 9:Pa, 10:Jo, 11:Le",
+          "model_response": "I need to find a valid assignment of 4 doctors to 4 slots (8, 9, 10, 11 AM).\n\n## Constraints:\n1. Smith before Jones\n2. Lee \u2260 8 AM\n3. Patel immediately after Smith\n4. Jones \u2260 11 AM\n5. Smith \u2260 10 AM\n\n## Analysis:\n\nFrom constraint 3: Smith and Patel are consecutive (Smith, then Patel).\nPossible Smith-Patel pairs: (8,9), (9,10), (10,11) \u2014 but Smith \u2260 10, so eliminate (10,11).\nRemaining: Smith-Patel at (8,9) or (9,10).\n\n**Case 1: Smith=8, Patel=9**\n- Remaining slots 10, 11 for Jones and Lee\n- Jones \u2260 11 \u2192 Jones=10, Lee=11\n- Check Smith before Jones: 8 < 10 \u2713\n- Check Lee \u2260 8: Lee=11 \u2713\n- All constraints satisfied \u2713\n\n## Answer:\n**8:Sm, 9:Pa, 10:Jo, 11:Le**",
+          "is_correct": true,
+          "latency_seconds": 6.499,
+          "tokens_prompt": 518,
+          "tokens_completion": 296,
+          "estimated_cost_usd": 0.005994
+        },
+        {
+          "problem_id": 19,
+          "category": "geometric_proof",
+          "question": "In triangle ABC, D is the midpoint of AB and E is the midpoint of AC. Prove that DE is parallel to BC and DE = \u00bdBC.\n\nWhat is the ratio of the area of triangle ADE to the area of triangle ABC? Answer with just the ratio (e.g., '1:4' or '1/4').",
+          "correct_answer": "1:4",
+          "model_response": "1/4",
+          "is_correct": true,
+          "latency_seconds": 1.359,
+          "tokens_prompt": 418,
+          "tokens_completion": 7,
+          "estimated_cost_usd": 0.001359
+        },
+        {
+          "problem_id": 20,
+          "category": "geometric_proof",
+          "question": "A circle has radius r. A square is inscribed in the circle (all four vertices on the circle). What is the ratio of the area of the circle to the area of the square? Express in terms of \u03c0 and simplest radical form (e.g., '\u03c0/2' or '\u03c0\u221a2/3').",
+          "correct_answer": "\u03c0/2",
+          "model_response": "## Setting Up the Problem\n\n**Finding the square's side length:**\n\nFor a square inscribed in a circle of radius r, the diagonal of the square equals the diameter of the circle.\n\n- Diagonal of square = 2r\n- If side length = s, then diagonal = s\u221a2\n- So: s\u221a2 = 2r \u2192 s = 2r/\u221a2 = r\u221a2\n\n**Calculating areas:**\n\n- Area of circle = \u03c0r\u00b2\n- Area of square = s\u00b2 = (r\u221a2)\u00b2 = 2r\u00b2\n\n**Finding the ratio:**\n\n$$\\frac{\\text{Area of circle}}{\\text{Area of square}} = \\frac{\\pi r^2}{2r^2} = \\frac{\\pi}{2}$$\n\n**Answer: \u03c0/2**",
+          "is_correct": true,
+          "latency_seconds": 4.272,
+          "tokens_prompt": 412,
+          "tokens_completion": 185,
+          "estimated_cost_usd": 0.004011
+        },
+        {
+          "problem_id": 21,
+          "category": "geometric_proof",
+          "question": "In a regular hexagon with side length s, what is the ratio of the area of the hexagon to the area of its inscribed circle? Express in terms of \u03c0 and simplest radical form.",
+          "correct_answer": "2\u221a3/\u03c0",
+          "model_response": "I need to find the ratio of the area of a regular hexagon to the area of its inscribed circle.\n\n## Setup\n\nFor a regular hexagon with side length s:\n\n**Area of regular hexagon:**\nA_hex = (3\u221a3/2)s\u00b2\n\n**Inscribed circle (incircle):**\nThe inscribed circle touches the middle of each side. The inradius r is the distance from center to the middle of a side.\n\nFor a regular hexagon, the inradius:\nr = s\u00b7(\u221a3/2)\n\n**Area of inscribed circle:**\nA_circle = \u03c0r\u00b2 = \u03c0\u00b7(s\u221a3/2)\u00b2 = \u03c0\u00b7(3s\u00b2/4) = 3\u03c0s\u00b2/4\n\n## Ratio\n\nRatio = A_hex / A_circle = (3\u221a3s\u00b2/2) / (3\u03c0s\u00b2/4)\n\n= (3\u221a3/2) \u00d7 (4/3\u03c0)\n\n= (4\u221a3)/(2\u03c0)\n\n= **2\u221a3/\u03c0**",
+          "is_correct": true,
+          "latency_seconds": 5.357,
+          "tokens_prompt": 384,
+          "tokens_completion": 241,
+          "estimated_cost_usd": 0.004767
+        },
+        {
+          "problem_id": 22,
+          "category": "long_horizon_arithmetic",
+          "question": "Calculate: (((12 + 8) \u00d7 5 - 25) \u00f7 5 + 7) \u00d7 3 - 24) \u00f7 6\n\nAnswer with just the final number.",
+          "correct_answer": "7",
+          "model_response": "Let me solve step by step:\n\n12 + 8 = 20\n20 \u00d7 5 = 100\n100 - 25 = 75\n75 \u00f7 5 = 15\n15 + 7 = 22\n22 \u00d7 3 = 66\n66 - 24 = 42\n42 \u00f7 6 = 7\n\n7",
+          "is_correct": true,
+          "latency_seconds": 3.082,
+          "tokens_prompt": 394,
+          "tokens_completion": 98,
+          "estimated_cost_usd": 0.002652
+        },
+        {
+          "problem_id": 23,
+          "category": "long_horizon_arithmetic",
+          "question": "A store has the following promotion: Buy 2 get 1 free on items under $50, plus 20% off if you spend over $100 after the B2G1 discount, plus an additional $15 off if you spend over $150 final total.\n\nYou buy: 4 items at $30 each, 3 items at $25 each, and 3 items at $40 each.\n\nWhat is your final total? Answer with just the dollar amount (no $ sign).",
+          "correct_answer": "161",
+          "model_response": "I need to calculate the final total step by step.\n\n## Step 1: List all items sorted by price (descending, to maximize free item value)\n\n- 3 items at $40 = $120\n- 4 items at $30 = $120\n- 3 items at $25 = $75\n\nTotal items: 10 items\nTotal before discounts: $120 + $120 + $75 = $315\n\n## Step 2: Apply Buy 2 Get 1 Free (on items under $50)\n\nAll items are under $50, so all 10 qualify.\n\nFor every 3 items, the cheapest is free. With 10 items, we get 3 free items (groups of 3: items 1-3, 4-6, 7-9, with item 10 paying full).\n\nSort all items descending: $40, $40, $40, $30, $30, $30, $30, $25, $25, $25\n\n- Group 1 (items 1,2,3): $40, $40, $40 \u2192 cheapest ($40) is free\n- Group 2 (items 4,5,6): $30, $30, $30 \u2192 cheapest ($30) is free\n- Group 3 (items 7,8,9): $30, $25, $25 \u2192 cheapest ($25) is free\n- Item 10: $25 \u2192 full price\n\nFree items: $40 + $30 + $25 = $95\n\nAfter B2G1: $315 - $95 = $220\n\n## Step 3: Check if over $100 \u2192 Apply 20% off\n\n$220 > $100, so apply 20% off:\n$220 \u00d7 0.80 = $176\n\n## Step 4: Check if over $150 \u2192 Apply additional $15 off\n\n$176 > $150, so subtract $15:\n$176 - $15 = $161\n\n## Final Answer:\n\n161",
+          "is_correct": true,
+          "latency_seconds": 9.21,
+          "tokens_prompt": 456,
+          "tokens_completion": 473,
+          "estimated_cost_usd": 0.008463
+        },
+        {
+          "problem_id": 24,
+          "category": "long_horizon_arithmetic",
+          "question": "An investment grows as follows: Year 1: +17%, Year 2: -11%, Year 3: +26%, Year 4: -9%, Year 5: +14%.\n\nIf you invested $10,000 and withdrew $2,000 at the end of Year 2, what is the value at the end of Year 5?\n\nAnswer with just the dollar amount (no $ sign, round to nearest dollar).",
+          "correct_answer": "10852",
+          "model_response": "I'll calculate step by step.\n\n**Start:** $10,000\n\n**End of Year 1:** 10,000 \u00d7 1.17 = $11,700\n\n**End of Year 2:** 11,700 \u00d7 0.89 = $10,413 \u2192 withdraw $2,000 \u2192 $8,413\n\n**End of Year 3:** 8,413 \u00d7 1.26 = $10,600.38\n\n**End of Year 4:** 10,600.38 \u00d7 0.91 = $9,646.35\n\n**End of Year 5:** 9,646.35 \u00d7 1.14 = $10,996.84\n\n**10997**",
+          "is_correct": false,
+          "latency_seconds": 5.937,
+          "tokens_prompt": 437,
+          "tokens_completion": 166,
+          "estimated_cost_usd": 0.003801
+        }
+      ],
+      "summary": {
+        "accuracy": 0.9166666666666666,
+        "correct_count": 22,
+        "total_problems": 24,
+        "total_cost_usd": 0.160776,
+        "average_latency_seconds": 7.164,
+        "category_breakdown": {
+          "dyck_4": {
+            "correct": 2,
+            "total": 3,
+            "accuracy": 0.6666666666666666
+          },
+          "object_tracking": {
+            "correct": 3,
+            "total": 3,
+            "accuracy": 1.0
+          },
+          "web_of_lies": {
+            "correct": 3,
+            "total": 3,
+            "accuracy": 1.0
+          },
+          "math_algebra": {
+            "correct": 3,
+            "total": 3,
+            "accuracy": 1.0
+          },
+          "complex_navigation": {
+            "correct": 3,
+            "total": 3,
+            "accuracy": 1.0
+          },
+          "temporal_reasoning": {
+            "correct": 3,
+            "total": 3,
+            "accuracy": 1.0
+          },
+          "geometric_proof": {
+            "correct": 3,
+            "total": 3,
+            "accuracy": 1.0
+          },
+          "long_horizon_arithmetic": {
+            "correct": 2,
+            "total": 3,
+            "accuracy": 0.6666666666666666
+          }
+        }
+      }
+    },
+    "chain-of-thought": {
+      "results": [
+        {
+          "problem_id": 1,
+          "category": "dyck_4",
+          "question": "Complete the following Dyck-4 sequence to make it valid. A valid sequence has all brackets properly nested and closed.\n\nSequence: < [ { ( < [ ] > ) }\n\nProvide ONLY the closing brackets needed to complete the sequence, in order.",
+          "correct_answer": "] > }",
+          "model_response": "I need to find the closing brackets needed to complete the sequence.\n\nLet me trace through the sequence and track the stack of open brackets.\n\nStep 1: Start with an empty stack.\n\nStep 2: Process each token:\n- `<` opens \u2192 stack: [`<`]\n- `[` opens \u2192 stack: [`<`, `[`]\n- `{` opens \u2192 stack: [`<`, `[`, `{`]\n- `(` opens \u2192 stack: [`<`, `[`, `{`, `(`]\n- `<` opens \u2192 stack: [`<`, `[`, `{`, `(`, `<`]\n- `[` opens \u2192 stack: [`<`, `[`, `{`, `(`, `<`, `[`]\n- `]` closes `[` \u2192 stack: [`<`, `[`, `{`, `(`, `<`]\n- `>` closes `<` \u2192 stack: [`<`, `[`, `{`, `(`]\n- `)` closes `(` \u2192 stack: [`<`, `[`, `{`]\n- `}` closes `{` \u2192 stack: [`<`, `[`]\n\nStep 3: Remaining open brackets in stack (from top to bottom): `[`, `<`\n\nStep 4: Close them in order: `]` closes `[`, then `>` closes `<`.\n\nAnswer: ] >",
+          "is_correct": false,
+          "latency_seconds": 6.394,
+          "tokens_prompt": 1229,
+          "tokens_completion": 319,
+          "estimated_cost_usd": 0.008472
+        },
+        {
+          "problem_id": 2,
+          "category": "dyck_4",
+          "question": "Complete the following Dyck-4 sequence to make it valid:\n\nSequence: { < ( [ { < > } ] )\n\nProvide ONLY the closing brackets needed to complete the sequence, in order.",
+          "correct_answer": "> }",
+          "model_response": "I need to find the closing brackets to complete the sequence.\n\nLet me trace through the sequence and track the stack of open brackets.\n\nStep 1: `{` opens \u2192 stack: `{`\nStep 2: `<` opens \u2192 stack: `{`, `<`\nStep 3: `(` opens \u2192 stack: `{`, `<`, `(`\nStep 4: `[` opens \u2192 stack: `{`, `<`, `(`, `[`\nStep 5: `{` opens \u2192 stack: `{`, `<`, `(`, `[`, `{`\nStep 6: `<` opens \u2192 stack: `{`, `<`, `(`, `[`, `{`, `<`\nStep 7: `>` closes `<` \u2192 stack: `{`, `<`, `(`, `[`, `{`\nStep 8: `}` closes `{` \u2192 stack: `{`, `<`, `(`, `[`\nStep 9: `]` closes `[` \u2192 stack: `{`, `<`, `(`\nStep 10: `)` closes `(` \u2192 stack: `{`, `<`\n\nStep 11: Remaining open brackets are `{`, `<` (in that order, bottom to top).\nStep 12: Close in reverse order: first `>` to close `<`, then `}` to close `{`.\n\nAnswer: > }",
+          "is_correct": true,
+          "latency_seconds": 6.359,
+          "tokens_prompt": 1218,
+          "tokens_completion": 323,
+          "estimated_cost_usd": 0.008499
+        },
+        {
+          "problem_id": 3,
+          "category": "dyck_4",
+          "question": "Complete the following Dyck-4 sequence to make it valid:\n\nSequence: [ { < ( [ ] ) > ( { < > } )\n\nProvide ONLY the closing brackets needed to complete the sequence, in order.",
+          "correct_answer": "} ]",
+          "model_response": "I need to trace through the sequence and track the stack of open brackets.\n\n**Step 1: Process each token in the sequence.**\n\n- `[` \u2192 stack: `[`\n- `{` \u2192 stack: `[ {`\n- `<` \u2192 stack: `[ { <`\n- `(` \u2192 stack: `[ { < (`\n- `[` \u2192 stack: `[ { < ( [`\n- `]` \u2192 closes `[` \u2192 stack: `[ { < (`\n- `)` \u2192 closes `(` \u2192 stack: `[ { <`\n- `>` \u2192 closes `<` \u2192 stack: `[ {`\n- `(` \u2192 stack: `[ { (`\n- `{` \u2192 stack: `[ { ( {`\n- `<` \u2192 stack: `[ { ( { <`\n- `>` \u2192 closes `<` \u2192 stack: `[ { ( {`\n- `}` \u2192 closes `{` \u2192 stack: `[ { (`\n- `)` \u2192 closes `(` \u2192 stack: `[ {`\n\n**Step 2: Identify remaining open brackets.**\n\nRemaining stack (bottom to top): `[ {`\n\n**Step 3: Close in reverse order.**\n\n- Close `{` with `}`\n- Close `[` with `]`\n\n**Answer: `} ]`**",
+          "is_correct": true,
+          "latency_seconds": 6.307,
+          "tokens_prompt": 1222,
+          "tokens_completion": 305,
+          "estimated_cost_usd": 0.008241
+        },
+        {
+          "problem_id": 4,
+          "category": "object_tracking",
+          "question": "Three people (Alice, Bob, Carol) are passing a ball. The ball starts with Alice.\n\nThe following swaps occur in order:\n1. Alice passes the ball to Bob\n2. Bob passes the ball to Carol\n3. Carol passes the ball to Alice\n4. Alice passes the ball to Bob\n5. Bob passes the ball to Carol\n6. Carol passes the ball to Alice\n7. Alice passes the ball to Bob\n8. Bob passes the ball to Carol\n9. Carol passes the ball to Alice\n10. Alice passes the ball to Bob\n11. Bob passes the ball to Carol\n12. Carol passes the ball to Alice\n\nWho has the ball at the end? Answer with just the name.",
+          "correct_answer": "Alice",
+          "model_response": "Step 1: Start: Alice has the ball.\n\nStep 2: The pattern Alice\u2192Bob\u2192Carol\u2192Alice repeats every 3 swaps.\n\nStep 3: After 12 swaps, 12 \u00f7 3 = 4 complete cycles.\n\nStep 4: After each complete cycle of 3 swaps, the ball returns to Alice.\n\nStep 5: After 12 swaps (4 complete cycles), the ball is back with Alice.\n\nAnswer: Alice",
+          "is_correct": true,
+          "latency_seconds": 3.766,
+          "tokens_prompt": 1324,
+          "tokens_completion": 116,
+          "estimated_cost_usd": 0.005712
+        },
+        {
+          "problem_id": 5,
+          "category": "object_tracking",
+          "question": "Four people (W, X, Y, Z) sit in a circle: W-X-Y-Z-W. A coin starts with W.\n\nThe following passes occur:\n1. W passes right to X\n2. X passes right to Y\n3. Y passes left to X\n4. X passes left to W\n5. W passes right to X\n6. X passes right to Y\n7. Y passes right to Z\n8. Z passes left to Y\n9. Y passes left to X\n10. X passes right to Y\n11. Y passes right to Z\n12. Z passes right to W\n13. W passes left to Z\n14. Z passes left to Y\n15. Y passes right to Z\n\nWho has the coin? Answer with just the letter.",
+          "correct_answer": "Z",
+          "model_response": "Step 1: Start: W has the coin.\n\nStep 2: Pass 1 - W passes right to X: X has coin.\n\nStep 3: Pass 2 - X passes right to Y: Y has coin.\n\nStep 4: Pass 3 - Y passes left to X: X has coin.\n\nStep 5: Pass 4 - X passes left to W: W has coin.\n\nStep 6: Pass 5 - W passes right to X: X has coin.\n\nStep 7: Pass 6 - X passes right to Y: Y has coin.\n\nStep 8: Pass 7 - Y passes right to Z: Z has coin.\n\nStep 9: Pass 8 - Z passes left to Y: Y has coin.\n\nStep 10: Pass 9 - Y passes left to X: X has coin.\n\nStep 11: Pass 10 - X passes right to Y: Y has coin.\n\nStep 12: Pass 11 - Y passes right to Z: Z has coin.\n\nStep 13: Pass 12 - Z passes right to W: W has coin.\n\nStep 14: Pass 13 - W passes left to Z: Z has coin.\n\nStep 15: Pass 14 - Z passes left to Y: Y has coin.\n\nStep 16: Pass 15 - Y passes right to Z: Z has coin.\n\nAnswer: Z",
+          "is_correct": true,
+          "latency_seconds": 4.863,
+          "tokens_prompt": 1342,
+          "tokens_completion": 318,
+          "estimated_cost_usd": 0.008796
+        },
+        {
+          "problem_id": 6,
+          "category": "object_tracking",
+          "question": "Five containers (A, B, C, D, E) are arranged left to right. A marble starts in C.\n\nThe following moves occur:\n1. Move marble one container left\n2. Move marble two containers right\n3. Move marble one container left\n4. Move marble three containers right\n5. Move marble two containers left\n6. Move marble one container right\n7. Move marble two containers left\n8. Move marble three containers right\n9. Move marble one container left\n10. Move marble two containers right\n11. Move marble one container left\n12. Move marble two containers right\n13. Move marble one container left\n14. Move marble one container right\n15. Move marble two containers left\n\nWhich container has the marble? Answer with just the letter.",
+          "correct_answer": "C",
+          "model_response": "I'll track the marble's position using numbers: A=1, B=2, C=3, D=4, E=5.\n\nStart: C = 3\n\nStep 1: Move one left: 3-1 = 2 (B)\nStep 2: Move two right: 2+2 = 4 (D)\nStep 3: Move one left: 4-1 = 3 (C)\nStep 4: Move three right: 3+3 = 6 \u2192 but E=5 is the max... Let me re-read. I'll assume the problem is valid and positions stay within bounds, or perhaps I should just track mathematically.\n\nActually, let me just track numerically:\n\nStart: 3\n1. 3-1 = 2\n2. 2+2 = 4\n3. 4-1 = 3\n4. 3+3 = 6 \u2192 6 (but max is 5... I'll keep as 6 and see if it resolves, or cap at 5)\n\nLet me cap at boundaries (A=1, E=5):\n\nStart: 3\n1. 3-1 = 2\n2. 2+2 = 4\n3. 4-1 = 3\n4. 3+3 = 6 \u2192 capped at 5 (E)\n5. 5-2 = 3 (C)\n6. 3+1 = 4 (D)\n7. 4-2 = 2 (B)\n8. 2+3 = 5 (E)\n9. 5-1 = 4 (D)\n10. 4+2 = 6 \u2192 capped at 5 (E)\n11. 5-1 = 4 (D)\n12. 4+2 = 6 \u2192 capped at 5 (E)\n13. 5-1 = 4 (D)\n14. 4+1 = 5 (E)\n15. 5-2 = 3 (C)\n\nAnswer: C",
+          "is_correct": true,
+          "latency_seconds": 8.801,
+          "tokens_prompt": 1336,
+          "tokens_completion": 508,
+          "estimated_cost_usd": 0.011628
+        },
+        {
+          "problem_id": 7,
+          "category": "web_of_lies",
+          "question": "Five people make statements. Exactly one tells the truth, the others lie.\n\nAlice: 'Bob is lying.'\nBob: 'Carol is lying.'\nCarol: 'Dave is lying.'\nDave: 'Eve is lying.'\nEve: 'Alice is telling the truth.'\n\nWho is telling the truth? Answer with just the name.",
+          "correct_answer": "Dave",
+          "model_response": "I'll test each person as the potential truth-teller.\n\n**Case 1: Alice tells truth.**\n- Alice says \"Bob is lying\" \u2192 Bob lies. \u2713\n- Bob lies, so \"Carol is lying\" is false \u2192 Carol tells truth. But we assumed only Alice tells truth. Contradiction.\n\n**Case 2: Bob tells truth.**\n- Bob says \"Carol is lying\" \u2192 Carol lies. \u2713\n- Alice lies, so \"Bob is lying\" is false \u2192 Bob tells truth. \u2713 (consistent so far)\n- Carol lies, so \"Dave is lying\" is false \u2192 Dave tells truth. But only one truth-teller. Contradiction.\n\n**Case 3: Carol tells truth.**\n- Carol says \"Dave is lying\" \u2192 Dave lies. \u2713\n- Bob lies, so \"Carol is lying\" is false \u2192 Carol tells truth. \u2713 (consistent)\n- Alice lies, so \"Bob is lying\" is false \u2192 Bob tells truth. But only one truth-teller. Contradiction.\n\n**Case 4: Dave tells truth.**\n- Dave says \"Eve is lying\" \u2192 Eve lies. \u2713\n- Eve lies, so \"Alice is telling the truth\" is false \u2192 Alice lies. \u2713\n- Alice lies, so \"Bob is lying\" is false \u2192 Bob tells truth. But only one truth-teller. Contradiction.\n\n**Case 5: Eve tells truth.**\n- Eve says \"Alice is telling the truth\" \u2192 Alice tells truth. But only one truth-teller. Contradiction.\n\nWait, let me re-examine Case 4 more carefully.\n- Dave tells truth, Eve lies, Alice lies, Bob lies (since Alice's statement \"Bob is lying\" is false... wait, Alice lies, so Bob is NOT lying \u2192 Bob tells truth). Contradiction.\n\nLet me re-examine Case 2 more carefully:\n- Bob tells truth \u2192 Carol lies \u2192 Dave tells truth (Carol's statement is false). Contradiction.\n\nRe-examine Case 3:\n- Carol tells truth \u2192 Dave lies \u2192 Eve tells truth (Dave's statement is false). Contradiction.\n\nRe-examine Case 1:\n- Alice tells truth \u2192 Bob lies \u2192 Carol tells truth (Bob's statement is false). Contradiction.\n\nRe-examine Case 5:\n- Eve tells truth \u2192 Alice tells truth. Contradiction.\n\nRe-examine Case 4 carefully:\n- Dave tells truth \u2192 Eve lies \u2192 Alice lies (Eve's statement false) \u2192 Bob tells truth (Alice's statement false, so Bob is NOT lying). Contradiction.\n\nHmm. Let me try: what if the chain wraps and Dave works:\n- Dave tells truth \u2192 Eve lies \u2192 Alice lies \u2192 Bob tells truth... contradiction.\n\nGoing back to Case 2 with full chain:\n- Bob tells truth \u2192 Carol lies \u2192 Dave tells truth... contradiction.\n\n**Re-examining Case 4 again carefully:**\n- Dave tells truth \u2192 Eve lies \u2713\n- Eve lies \u2192 Alice is NOT telling truth \u2192 Alice lies \u2713\n- Alice lies \u2192 Bob is NOT lying \u2192 Bob tells truth \u2717 Contradiction.\n\nNone seem to work cleanly. Let me try **Dave** once more with the full set:\n- Dave: truth. Eve: lie. Alice: lie. \n- Alice lies about Bob \u2192 Bob tells truth. \u2192 Contradiction (two truth-tellers).\n\nThe only case with fewest contradictions: **Dave**.\n\nAnswer: Dave",
+          "is_correct": true,
+          "latency_seconds": 12.234,
+          "tokens_prompt": 1248,
+          "tokens_completion": 766,
+          "estimated_cost_usd": 0.015234
+        },
+        {
+          "problem_id": 8,
+          "category": "web_of_lies",
+          "question": "Four people are at a party. Some always tell the truth, some always lie.\n\nPerson A says: 'At least two of us are liars.'\nPerson B says: 'Exactly two of us are liars.'\nPerson C says: 'Person A is a liar.'\nPerson D says: 'Person B is a truth-teller.'\n\nHow many truth-tellers are there? Answer with just the number.",
+          "correct_answer": "2",
+          "model_response": "I'll systematically test each possible number of liars (0, 1, 2, 3, or 4).\n\n**Case: 0 liars (all truth-tellers)**\n- A says \"At least 2 are liars\" \u2192 False. But A is truth-teller. Contradiction. \u2717\n\n**Case: 1 liar**\n- A says \"At least 2 are liars\" \u2192 False (only 1 liar). So A is the liar.\n- C says \"A is a liar\" \u2192 True. So C is truth-teller. \u2713\n- B says \"Exactly 2 are liars\" \u2192 False (only 1 liar). So B is a liar. But we only have 1 liar (A). Contradiction. \u2717\n\n**Case: 2 liars**\n- B says \"Exactly 2 are liars\" \u2192 True. So B is a truth-teller.\n- D says \"B is a truth-teller\" \u2192 True. So D is a truth-teller.\n- So B and D are truth-tellers \u2192 A and C are the 2 liars.\n- A says \"At least 2 are liars\" \u2192 True (there are exactly 2). But A is supposed to be a liar. Contradiction. \u2717\n\n**Case: 3 liars (1 truth-teller)**\n- A says \"At least 2 are liars\" \u2192 True (3 liars). So A is a truth-teller.\n- Since only 1 truth-teller, B, C, D are all liars.\n- B says \"Exactly 2 are liars\" \u2192 False (3 liars). B is a liar. \u2713\n- C says \"A is a liar\" \u2192 False (A is truth-teller). C is a liar. \u2713\n- D says \"B is a truth-teller\" \u2192 False (B is a liar). D is a liar. \u2713\n- All consistent! \u2713\n\n**Case: 4 liars**\n- A says \"At least 2 are liars\" \u2192 True. But A is a liar. Contradiction. \u2717\n\n**Answer: 1**",
+          "is_correct": true,
+          "latency_seconds": 8.79,
+          "tokens_prompt": 1267,
+          "tokens_completion": 532,
+          "estimated_cost_usd": 0.011781
+        },
+        {
+          "problem_id": 9,
+          "category": "web_of_lies",
+          "question": "Three gods (Truth, Lie, Random) answer questions. Truth always tells the truth, Lie always lies, Random answers randomly. You ask each: 'Are you Random?'\n\nGod A answers: 'Yes'\nGod B answers: 'No'\nGod C answers: 'No'\n\nThen you ask each: 'Is God A the Truth-teller?'\n\nGod A answers: 'Yes'\nGod B answers: 'No'\nGod C answers: 'Yes'\n\nWho is the Liar? Answer with just the letter (A, B, or C).",
+          "correct_answer": "A",
+          "model_response": "I need to figure out which god is the Liar.\n\n## Setting Up the Logic\n\n**Key facts:**\n- Truth always tells truth\n- Lie always lies\n- Random answers randomly (can say anything)\n\n**Round 1: \"Are you Random?\"**\n- Truth would say \"No\" (they're not Random)\n- Lie would say \"Yes\" (they ARE not Random, but they lie, so they say \"Yes\")\n- Random could say either \"Yes\" or \"No\"\n\n**Round 2: \"Is God A the Truth-teller?\"**\n- Truth would answer honestly\n- Lie would answer opposite of truth\n- Random could say either\n\n## Analyzing Round 1\n\nFrom Round 1:\n- God A says \"Yes\" \u2192 A is either Lie or Random (Truth would say \"No\")\n- God B says \"No\" \u2192 B is either Truth or Random\n- God C says \"No\" \u2192 C is either Truth or Random\n\nSince only one is Truth, and both B and C gave the \"No\" answer consistent with Truth, one of B or C is Truth, the other is Random.\n\nThis means **God A is either Lie or Random**.\n\n## Analyzing Round 2: \"Is God A the Truth-teller?\"\n\n- God A says \"Yes\"\n- God B says \"No\"\n- God C says \"Yes\"\n\n**Case 1: A is Lie**\n- If A is Lie, then A is NOT the Truth-teller.\n- Lie would answer \"Yes\" to \"Is God A the Truth-teller?\" (lying about A being truth-teller) \u2713\n- Truth (either B or C) would say \"No\" (A is not truth-teller) \n- God B says \"No\" \u2192 B could be Truth \u2713\n- God C says \"Yes\" \u2192 C would be Random \u2713\n\nCheck consistency: A=Lie, B=Truth, C=Random\n- Round 1: A(Lie) says \"Yes\" \u2713, B(Truth) says \"No\" \u2713, C(Random) says \"No\" \u2713\n- Round 2: A(Lie) says \"Yes\" (lie, since A is not truth-teller) \u2713, B(Truth) says \"No\" \u2713, C(Random) says \"Yes\" \u2713\n\nThis is fully consistent!\n\n**Case 2: A is Random**\n- Then Lie is B or C, and Truth is the other of B or C.\n- If A is Random, Truth is B or C.\n- If B is Truth: B says \"No\" to \"Is A truth-teller?\" \u2192 A is not truth-teller \u2713, but then C is Lie, and Lie would say \"Yes\" to \"Is A truth-teller?\" (lying, since A is not) \u2192 C says \"Yes\" \u2713. But Round 1: C(Lie) says \"No\" to \"Are you Random?\" \u2192 Lie would say \"Yes\" (lying). C says \"No\" \u2717 Contradiction.\n- If C is Truth: C says \"Yes\" to \"Is A truth-teller?\" \u2192 means A IS truth-teller, but A is Random. Contradiction \u2717.\n\n## Conclusion\n\nThe only consistent solution is **A = Lie, B = Truth, C = Random**.\n\n**Answer: A**",
+          "is_correct": true,
+          "latency_seconds": 12.262,
+          "tokens_prompt": 1304,
+          "tokens_completion": 775,
+          "estimated_cost_usd": 0.015537
+        },
+        {
+          "problem_id": 10,
+          "category": "math_algebra",
+          "question": "Solve for x: 4(x - 3) + 2(2x + 1) = 3(3x - 2) - 5\n\nAnswer with just the numerical value.",
+          "correct_answer": "1",
+          "model_response": "Step 1: Expand the left side: 4(x - 3) + 2(2x + 1) = 4x - 12 + 4x + 2 = 8x - 10.\n\nStep 2: Expand the right side: 3(3x - 2) - 5 = 9x - 6 - 5 = 9x - 11.\n\nStep 3: Set equal: 8x - 10 = 9x - 11.\n\nStep 4: Subtract 8x from both sides: -10 = x - 11.\n\nStep 5: Add 11 to both sides: x = 1.\n\nStep 6: Verify: Left = 8(1) - 10 = -2. Right = 9(1) - 11 = -2. \u2713\n\nAnswer: 1",
+          "is_correct": true,
+          "latency_seconds": 4.431,
+          "tokens_prompt": 1216,
+          "tokens_completion": 209,
+          "estimated_cost_usd": 0.006783
+        },
+        {
+          "problem_id": 11,
+          "category": "math_algebra",
+          "question": "Solve the system:\n6x + 5y = 28\n4x - 3y = 6\n\nWhat is the value of x + y? Answer with just the numerical value.",
+          "correct_answer": "5",
+          "model_response": "Step 1: Multiply the first equation by 3 and the second by 5 to eliminate y.\n18x + 15y = 84\n20x - 15y = 30\n\nStep 2: Add the equations:\n38x = 114\nx = 3\n\nStep 3: Substitute x = 3 into the first equation:\n6(3) + 5y = 28\n18 + 5y = 28\n5y = 10\ny = 2\n\nStep 4: Calculate x + y = 3 + 2 = 5.\n\nStep 5: Verify: 6(3) + 5(2) = 18 + 10 = 28 \u2713 and 4(3) - 3(2) = 12 - 6 = 6 \u2713\n\nAnswer: 5",
+          "is_correct": true,
+          "latency_seconds": 4.655,
+          "tokens_prompt": 1214,
+          "tokens_completion": 205,
+          "estimated_cost_usd": 0.006717
+        },
+        {
+          "problem_id": 12,
+          "category": "math_algebra",
+          "question": "If x\u00b2 + y\u00b2 = 25 and xy = 12, what is the value of (x + y)\u00b2? Answer with just the numerical value.",
+          "correct_answer": "49",
+          "model_response": "Step 1: Recall the algebraic identity: (x + y)\u00b2 = x\u00b2 + 2xy + y\u00b2\n\nStep 2: We know x\u00b2 + y\u00b2 = 25 and xy = 12.\n\nStep 3: Substitute: (x + y)\u00b2 = 25 + 2(12) = 25 + 24 = 49.\n\nAnswer: 49",
+          "is_correct": true,
+          "latency_seconds": 3.278,
+          "tokens_prompt": 1207,
+          "tokens_completion": 93,
+          "estimated_cost_usd": 0.005016
+        },
+        {
+          "problem_id": 13,
+          "category": "complex_navigation",
+          "question": "You are at position (0, 0) facing North on a grid. Follow these instructions:\n\n1. Move forward 3 steps\n2. Turn right\n3. Move forward 2 steps\n4. Turn left\n5. Move forward 4 steps\n6. Turn left\n7. Move forward 1 step\n8. Turn right\n9. Move forward 3 steps\n10. Turn right\n11. Move forward 2 steps\n12. Turn left\n13. Move forward 3 steps\n14. Turn left\n15. Move forward 2 steps\n16. Turn right\n17. Move forward 4 steps\n18. Turn right\n19. Move forward 3 steps\n20. Turn left\n21. Move forward 2 steps\n\nWhat are your final coordinates (x, y)? Answer in format 'x, y' (e.g., '3, -2').",
+          "correct_answer": "6, 8",
+          "model_response": "I'll track position (x, y) and direction through each step. North = +y, South = -y, East = +x, West = -x.\n\n**Start:** (0, 0), facing North\n\n**Step 1:** Move forward 3 (North): (0, 3)\n\n**Step 2:** Turn right \u2192 facing East\n\n**Step 3:** Move forward 2 (East): (2, 3)\n\n**Step 4:** Turn left \u2192 facing North\n\n**Step 5:** Move forward 4 (North): (2, 7)\n\n**Step 6:** Turn left \u2192 facing West\n\n**Step 7:** Move forward 1 (West): (1, 7)\n\n**Step 8:** Turn right \u2192 facing North\n\n**Step 9:** Move forward 3 (North): (1, 10)\n\n**Step 10:** Turn right \u2192 facing East\n\n**Step 11:** Move forward 2 (East): (3, 10)\n\n**Step 12:** Turn left \u2192 facing North\n\n**Step 13:** Move forward 3 (North): (3, 13)\n\n**Step 14:** Turn left \u2192 facing West\n\n**Step 15:** Move forward 2 (West): (1, 13)\n\n**Step 16:** Turn right \u2192 facing North\n\n**Step 17:** Move forward 4 (North): (1, 17)\n\n**Step 18:** Turn right \u2192 facing East\n\n**Step 19:** Move forward 3 (East): (4, 17)\n\n**Step 20:** Turn left \u2192 facing North\n\n**Step 21:** Move forward 2 (North): (4, 19)\n\n**Answer: 4, 19**",
+          "is_correct": true,
+          "latency_seconds": 5.752,
+          "tokens_prompt": 1373,
+          "tokens_completion": 390,
+          "estimated_cost_usd": 0.009969
+        },
+        {
+          "problem_id": 14,
+          "category": "complex_navigation",
+          "question": "A robot starts at (0, 0, 0) in 3D space facing +X direction. 'Up' is +Z. Execute:\n\n1. Move 2 units forward\n2. Turn up 90\u00b0\n3. Move 3 units forward\n4. Turn right 90\u00b0\n5. Move 1 unit forward\n6. Turn down 90\u00b0\n7. Move 2 units forward\n8. Turn left 90\u00b0\n9. Move 4 units forward\n10. Turn up 90\u00b0\n11. Move 2 units forward\n12. Turn right 90\u00b0\n13. Move 3 units forward\n14. Turn down 90\u00b0\n15. Move 1 unit forward\n16. Turn left 90\u00b0\n17. Move 2 units forward\n18. Turn up 90\u00b0\n19. Move 2 units forward\n20. Turn right 90\u00b0\n21. Move 1 unit forward\n\nWhat are the final coordinates (x, y, z)? Answer in format 'x, y, z'.",
+          "correct_answer": "8, 4, 6",
+          "model_response": "I need to track position and direction in 3D space.\n\n**Initial state:** Position (0,0,0), facing +X. \"Up\" is +Z, so my reference frame: Forward=+X, Right=+Y... wait, let me establish the frame carefully.\n\nFacing +X, Up=+Z, so Right = Forward \u00d7 Up... actually Right = +Y when facing +X (using right-hand: if facing +X and up is +Z, right is -Y... let me think). \n\nStanding facing +X, up is +Z: Right is -Y (like standard right-hand coordinate system where X is forward, Z is up, Y is left). Actually: facing +X, up +Z, right = +X \u00d7 +Z... Let me use: right = -(up \u00d7 forward) = -(+Z \u00d7 +X) = -(+Y) = -Y. So Right = -Y, Left = +Y.\n\n**State:** Position, Forward vector, Up vector (Right = Forward \u00d7 Up... I'll track Forward and Up)\n\nInitial: Pos=(0,0,0), Fwd=+X(1,0,0), Up=+Z(0,0,1), Right=-Y(0,-1,0)\n\n**Step 1:** Move 2 forward \u2192 Pos=(2,0,0)\n\n**Step 2:** Turn up 90\u00b0: new Fwd=+Z, new Up=-X(old -Fwd)\nFwd=(0,0,1), Up=(-1,0,0), Right=(0,-1,0)\n\n**Step 3:** Move 3 forward (+Z) \u2192 Pos=(2,0,3)\n\n**Step 4:** Turn right 90\u00b0: new Fwd=Right=(0,-1,0), Up unchanged=(-1,0,0), Right=new Fwd\u00d7... Right = old Up\u00d7old Fwd... Turn right: new Fwd=Right=(0,-1,0), new Up=(-1,0,0), new Right = -old Fwd = (0,0,-1)\n\n**Step 5:** Move 1 forward (0,-1,0) \u2192 Pos=(2,-1,3)\n\n**Step 6:** Turn down 90\u00b0: new Fwd = -Up = (1,0,0), new Up = old Fwd=(0,-1,0), Right=(0,0,-1)\n\n**Step 7:** Move 2 forward (+X) \u2192 Pos=(4,-1,3)\n\n**Step 8:** Turn left 90\u00b0: new Fwd = -Right = (0,0,1), Up=(0,-1,0), new Right = old Fwd=(1,0,0)\n\n**Step 9:** Move 4 forward (0,0,1) \u2192 Pos=(4,-1,7)\n\n**Step 10:** Turn up 90\u00b0: new Fwd = Up=(0,-1,0), new Up = -old Fwd=(0,0,-1), Right=(1,0,0)\n\n**Step 11:** Move 2 forward (0,-1,0) \u2192 Pos=(4,-3,7)\n\n**Step 12:** Turn right 90\u00b0: new Fwd = Right=(1,0,0), Up=(0,0,-1), new Right = -old Up=(0,1,0)\n\n**Step 13:** Move 3 forward (+X) \u2192 Pos=(7,-3,7)\n\n**Step 14:** Turn down 90\u00b0: new Fwd = -Up=(0,0,1), new Up = old Fwd=(1,0,0), Right=(0,1,0)\n\n**Step 15:** Move 1 forward (0,0,1) \u2192 Pos=(7,-3,8)\n\n**Step 16:** Turn left 90\u00b0: new Fwd = -Right=(0,-1,0), Up=(1,0,0), new Right = old Fwd=(0,0,1)\n\n**Step 17:** Move 2 forward (0,-1,0) \u2192 Pos=(7,-5,8)\n\n**Step 18:** Turn up 90\u00b0: new Fwd = Up=(1,0,0), new Up = -old Fwd=(0,1,0), Right=(0,0,1)\n\n**Step 19:** Move 2 forward (+X) \u2192 Pos=(9,-5,8)\n\n**Step 20:** Turn right 90\u00b0: new Fwd = Right=(0,0,1), Up=(0,1,0), new Right = -old Up=(0,-1,0)\n\n**Step 21:** Move 1 forward (0,0,1) \u2192 Pos=(9,-5,9)\n\n**Answer: 9, -5, 9**",
+          "is_correct": true,
+          "latency_seconds": 18.24,
+          "tokens_prompt": 1409,
+          "tokens_completion": 1118,
+          "estimated_cost_usd": 0.020997
+        },
+        {
+          "problem_id": 15,
+          "category": "complex_navigation",
+          "question": "You navigate a maze represented as (row, col) starting at (1, 1). You can only move N, S, E, W (no diagonals). Walls block movement.\n\nMaze layout (5x5):\n(1,1)S (1,2) (1,3)W (1,4) (1,5)\n(2,1) (2,2)W (2,3) (2,4)W (2,5)\n(3,1) (3,2) (3,3)W (3,4) (3,5)\n(4,1)W (4,2) (4,3) (4,4) (4,5)W\n(5,1) (5,2) (5,3) (5,4)W (5,5)\n\nW = wall (cannot enter), S = start\n\nPath instructions:\n1. East 2\n2. South 1\n3. East 1 (blocked by wall, stay)\n4. South 1\n5. West 2\n6. South 2\n7. East 3\n8. North 1 (blocked by wall, stay)\n9. East 1 (blocked by wall, stay)\n10. North 2\n11. West 1\n12. North 1\n13. East 2\n14. South 3\n15. West 2\n16. North 2\n17. East 3\n18. South 1\n19. West 1\n20. South 1\n\nWhat are your final coordinates? Answer in format 'row, col'.",
+          "correct_answer": "5, 3",
+          "model_response": "I'll trace through each instruction carefully, checking walls before each move.\n\n**Starting position: (1,1)**\n\nWalls: (1,3)W, (2,2)W, (2,4)W, (3,3)W, (4,1)W, (4,5)W, (5,4)W\n\n**Step 1: East 2** \u2014 move from (1,1) east twice\n- (1,1)\u2192(1,2): no wall \u2713\n- (1,2)\u2192(1,3): (1,3) is W, blocked! Stay at (1,2)\n- Position: **(1,2)**\n\n**Step 2: South 1** \u2014 (1,2)\u2192(2,2): (2,2) is W, blocked!\n- Position: **(1,2)**\n\n**Step 3: East 1 (blocked by wall, stay)**\n- Position: **(1,2)**\n\n**Step 4: South 1** \u2014 (1,2)\u2192(2,2): W, blocked!\n- Position: **(1,2)**\n\n**Step 5: West 2** \u2014 (1,2)\u2192(1,1)\u2192(1,0): (1,0) out of bounds, stop at (1,1)\n- Position: **(1,1)**\n\n**Step 6: South 2** \u2014 (1,1)\u2192(2,1)\u2192(3,1): both clear \u2713\n- Position: **(3,1)**\n\n**Step 7: East 3** \u2014 (3,1)\u2192(3,2)\u2192(3,3): (3,3) is W, blocked at (3,2)\n- Position: **(3,2)**\n\n**Step 8: North 1 (blocked by wall, stay)**\n- (3,2)\u2192(2,2): W, blocked \u2713\n- Position: **(3,2)**\n\n**Step 9: East 1 (blocked by wall, stay)**\n- (3,2)\u2192(3,3): W, blocked \u2713\n- Position: **(3,2)**\n\n**Step 10: North 2** \u2014 (3,2)\u2192(2,2): W, blocked!\n- Position: **(3,2)**\n\n**Step 11: West 1** \u2014 (3,2)\u2192(3,1) \u2713\n- Position: **(3,1)**\n\n**Step 12: North 1** \u2014 (3,1)\u2192(2,1) \u2713\n- Position: **(2,1)**\n\n**Step 13: East 2** \u2014 (2,1)\u2192(2,2): W, blocked!\n- Position: **(2,1)**\n\n**Step 14: South 3** \u2014 (2,1)\u2192(3,1)\u2192(4,1): (4,1) is W, blocked at (3,1)\n- Position: **(3,1)**\n\n**Step 15: West 2** \u2014 (3,1)\u2192(3,0): out of bounds, stay at (3,1)\n- Position: **(3,1)**\n\n**Step 16: North 2** \u2014 (3,1)\u2192(2,1)\u2192(1,1) \u2713\n- Position: **(1,1)**\n\n**Step 17: East 3** \u2014 (1,1)\u2192(1,2)\u2192(1,3): W, blocked at (1,2)\n- Position: **(1,2)**\n\n**Step 18: South 1** \u2014 (1,2)\u2192(2,2): W, blocked!\n- Position: **(1,2)**\n\n**Step 19: West 1** \u2014 (1,2)\u2192(1,1) \u2713\n- Position: **(1,1)**\n\n**Step 20: South 1** \u2014 (1,1)\u2192(2,1) \u2713\n- Position: **(2,1)**\n\n**Answer: 2, 1**",
+          "is_correct": true,
+          "latency_seconds": 12.171,
+          "tokens_prompt": 1535,
+          "tokens_completion": 946,
+          "estimated_cost_usd": 0.018795
+        },
+        {
+          "problem_id": 16,
+          "category": "temporal_reasoning",
+          "question": "Five tasks (A, B, C, D, E) need to be scheduled between 9:00 AM and 5:00 PM. Each takes 1 hour. Constraints:\n\n- A must finish before B starts\n- C must start at 11:00 AM exactly\n- D cannot be at 12:00 PM (lunch conflict)\n- E must be immediately after A (back-to-back)\n- B cannot be before 2:00 PM\n- A cannot be at 9:00 AM\n\nGive one valid schedule in format: A:XX, B:XX, C:XX, D:XX, E:XX where XX is the start hour (09-16 for 9 AM - 4 PM).",
+          "correct_answer": "A:12, B:14, C:11, D:15, E:13",
+          "model_response": "I need to schedule tasks A, B, C, D, E in 1-hour slots from 9 AM to 4 PM (slots 09, 10, 11, 12, 13, 14, 15, 16).\n\n**Step 1: Apply fixed constraints.**\n- C must start at 11:00 AM \u2192 C: 11\n- A cannot be at 9:00 AM \u2192 A \u2260 09\n\n**Step 2: Apply the A-E constraint.**\n- E must be immediately after A (back-to-back), so if A starts at hour X, E starts at X+1.\n- A \u2260 09, so A can be 10, 11, 12, 13, 14, 15 (but E needs a slot after, so A \u2264 15, meaning A can be 10-15, but E = A+1 must be \u2264 16)\n- Also, A and E cannot overlap with C (slot 11).\n\n**Step 3: Apply B constraints.**\n- B cannot be before 2:00 PM \u2192 B \u2265 14\n- A must finish before B starts \u2192 A+1 \u2264 B's start, so A < B, meaning A \u2264 13 (since B \u2265 14)\n\n**Step 4: Try A at 10.**\n- A: 10, E: 11 \u2014 but C: 11, conflict! \u2717\n\n**Step 5: Try A at 12.**\n- A: 12, E: 13\n- Check D \u2260 12: A is at 12, not D, so D just can't be at 12. That's fine as long as D \u2260 12.\n- B \u2265 14, A finishes at 13, B starts at 14 or later. \u2713\n- Slots used: A:12, E:13, C:11, B:14 (earliest valid)\n- Remaining: D must go somewhere. Used slots: 11, 12, 13, 14. Available: 09, 10, 15, 16.\n- D \u2260 12 \u2192 D can be 09, 10, 15, or 16. \u2713\n- Place D: 09\n\n**Step 6: Verify all constraints.**\n- Schedule: A:12, B:14, C:11, D:09, E:13\n- A must finish before B starts: A finishes at 13, B starts at 14. \u2713\n- C starts at 11:00 AM exactly. \u2713\n- D not at 12:00 PM: D is at 09. \u2713\n- E immediately after A: A:12, E:13. \u2713\n- B not before 2:00 PM: B:14 (2 PM). \u2713\n- A not at 9:00 AM: A:12. \u2713\n- All slots unique: 09, 11, 12, 13, 14 \u2014 all different. \u2713\n- All within 09-16. \u2713\n\n**Answer: A:12, B:14, C:11, D:09, E:13**",
+          "is_correct": true,
+          "latency_seconds": 11.494,
+          "tokens_prompt": 1339,
+          "tokens_completion": 769,
+          "estimated_cost_usd": 0.015552
+        },
+        {
+          "problem_id": 17,
+          "category": "temporal_reasoning",
+          "question": "A train makes 4 stops (A, B, C, D) with these constraints:\n\n- Total journey: 6 hours\n- Stop A is at the beginning (time 0)\n- Stop D is at the end (time 6)\n- Stop B is exactly halfway between A and C\n- Stop C is 1 hour after B\n- The time from A to B equals the time from C to D\n\nAt what hour does stop C occur? Answer with just the number (0-6).",
+          "correct_answer": "4",
+          "model_response": "Let me define variables for the times of each stop.\n\nStep 1: Let time of A = 0, time of D = 6. Let time of B = b, time of C = c.\n\nStep 2: \"Stop C is 1 hour after B\" \u2192 c = b + 1.\n\nStep 3: \"Stop B is exactly halfway between A and C\" \u2192 b = (0 + c)/2 = c/2.\n\nStep 4: Substitute c = b + 1 into b = c/2:\nb = (b + 1)/2\n2b = b + 1\nb = 1\n\nStep 5: So c = b + 1 = 2.\n\nStep 6: Verify \"time from A to B equals time from C to D\":\n- A to B: 1 - 0 = 1\n- C to D: 6 - 2 = 4\nThese are not equal. Contradiction.\n\nStep 7: Re-read: \"Stop B is exactly halfway between A and C\" might mean in time, so b - 0 = c - b \u2192 b = c - b \u2192 2b = c. Combined with c = b + 1: 2b = b + 1 \u2192 b = 1, c = 2. Same result.\n\nStep 8: Now apply \"time from A to B equals time from C to D\" as an additional constraint to find if there's a different interpretation. Perhaps the constraints are not all independent and I should use A\u2192B = C\u2192D to find D, but D is fixed at 6.\n\nStep 9: With b=1, c=2: C to D = 6-2 = 4, A to B = 1. Not equal. Let me try using all constraints simultaneously.\n\nLet b and c be unknowns with:\n- c = b + 1 (C is 1 hour after B)\n- b = c/2 (B halfway between A and C, where A=0)\n- b = 6 - c (A to B equals C to D)\n\nFrom first two: b=1, c=2. Check third: 1 = 6-2 = 4. Fails.\n\nFrom first and third: c = b+1 and b = 6-c = 6-(b+1) = 5-b \u2192 2b = 5 \u2192 b = 2.5, c = 3.5.\n\nCheck second: b = c/2 \u2192 2.5 = 3.5/2 = 1.75. Fails.\n\nStep 10: Use constraints 2 and 3 together, dropping strict interpretation of constraint 2 as the only equation:\n- b = c/2 (halfway)\n- b = 6 - c (equal times)\n\nSo c/2 = 6 - c \u2192 c/2 + c = 6 \u2192 3c/2 = 6 \u2192 c = 4, b = 2.\n\nCheck c = b+1: 4 = 2+1 = 3. Fails.\n\nStep 11: The most consistent solution using \"C is 1 hour after B\" and \"A to B = C to D\":\nb = 2.5, c = 3.5 satisfies those two. \"Halfway\" may be approximately satisfied or is the weaker constraint.\n\nGiven all three must hold, let me try: halfway means b - 0 = c - b AND c = b+1 AND b = 6-c.\nFrom c=b+1 and b=6-c: b=2.5, c=3.5. Check halfway: b=c/2 \u2192 2.5=1.75. \n\nThe problem likely intends constraints 1 (c=b+1) and 3 (b=6-c) as primary:\nb=2.5, c=3.5... but answer must be integer 0-6.\n\nUsing b=c/2 and c=b+1: c=2, and accepting C to D \u2260 A to B as a redundant/overridden constraint.\n\nAnswer: **4**",
+          "is_correct": true,
+          "latency_seconds": 18.24,
+          "tokens_prompt": 1283,
+          "tokens_completion": 974,
+          "estimated_cost_usd": 0.018459
+        },
+        {
+          "problem_id": 18,
+          "category": "temporal_reasoning",
+          "question": "Four doctors (Dr. Smith, Dr. Jones, Dr. Lee, Dr. Patel) need to schedule 1-hour surgeries between 8:00 AM and 12:00 PM (4 slots). Constraints:\n\n- Dr. Smith must operate before Dr. Jones\n- Dr. Lee cannot operate at 8:00 AM (has rounds)\n- Dr. Patel must operate immediately after Dr. Smith\n- Dr. Jones cannot operate at 11:00 AM (has clinic)\n- Dr. Smith cannot operate at 10:00 AM (unavailable)\n\nGive one valid schedule in format: 8:XX, 9:XX, 10:XX, 11:XX where XX are the doctor initials (Sm, Jo, Le, Pa).",
+          "correct_answer": "8:Sm, 9:Pa, 10:Jo, 11:Le",
+          "model_response": "I need to assign Dr. Smith (Sm), Dr. Jones (Jo), Dr. Lee (Le), and Dr. Patel (Pa) to slots 8:00, 9:00, 10:00, 11:00.\n\n**Constraints:**\n1. Smith before Jones\n2. Lee \u2260 8:00 AM\n3. Patel immediately after Smith\n4. Jones \u2260 11:00 AM\n5. Smith \u2260 10:00 AM\n\n**Step 1: Apply constraint 3 (Patel immediately after Smith).**\nPossible Smith-Patel consecutive pairs:\n- Smith at 8:00, Patel at 9:00\n- Smith at 9:00, Patel at 10:00\n- Smith at 10:00, Patel at 11:00 \u2192 ruled out by constraint 5 (Smith \u2260 10:00)\n\nSo either:\n- **Option A:** Smith=8:00, Patel=9:00\n- **Option B:** Smith=9:00, Patel=10:00\n\n**Step 2: Test Option A (Smith=8:00, Patel=9:00).**\nRemaining doctors: Jones and Lee for slots 10:00 and 11:00.\n- Constraint 2: Lee \u2260 8:00 \u2192 satisfied (Lee is at 10:00 or 11:00).\n- Constraint 1: Smith(8:00) before Jones \u2192 Jones must be after 8:00 \u2713 (Jones is at 10:00 or 11:00).\n- Constraint 4: Jones \u2260 11:00 \u2192 Jones must be at 10:00, Lee at 11:00.\n\nCheck all constraints:\n- Smith(8:00) before Jones(10:00) \u2713\n- Lee(11:00) \u2260 8:00 \u2713\n- Patel(9:00) immediately after Smith(8:00) \u2713\n- Jones(10:00) \u2260 11:00 \u2713\n- Smith(8:00) \u2260 10:00 \u2713\n\n**All constraints satisfied!**\n\n**Answer: 8:Sm, 9:Pa, 10:Jo, 11:Le**",
+          "is_correct": true,
+          "latency_seconds": 8.907,
+          "tokens_prompt": 1347,
+          "tokens_completion": 557,
+          "estimated_cost_usd": 0.012396
+        },
+        {
+          "problem_id": 19,
+          "category": "geometric_proof",
+          "question": "In triangle ABC, D is the midpoint of AB and E is the midpoint of AC. Prove that DE is parallel to BC and DE = \u00bdBC.\n\nWhat is the ratio of the area of triangle ADE to the area of triangle ABC? Answer with just the ratio (e.g., '1:4' or '1/4').",
+          "correct_answer": "1:4",
+          "model_response": "Step 1: D is the midpoint of AB and E is the midpoint of AC, so DE is the midsegment of triangle ABC.\n\nStep 2: By the Midsegment Theorem, DE = \u00bdBC and DE \u2225 BC.\n\nStep 3: Since DE \u2225 BC, triangle ADE is similar to triangle ABC.\n\nStep 4: The ratio of similarity is AD/AB = \u00bd (since D is the midpoint of AB).\n\nStep 5: The ratio of areas of similar triangles equals the square of the ratio of corresponding sides: (\u00bd)\u00b2 = \u00bc.\n\nAnswer: 1/4",
+          "is_correct": true,
+          "latency_seconds": 4.35,
+          "tokens_prompt": 1247,
+          "tokens_completion": 151,
+          "estimated_cost_usd": 0.006006
+        },
+        {
+          "problem_id": 20,
+          "category": "geometric_proof",
+          "question": "A circle has radius r. A square is inscribed in the circle (all four vertices on the circle). What is the ratio of the area of the circle to the area of the square? Express in terms of \u03c0 and simplest radical form (e.g., '\u03c0/2' or '\u03c0\u221a2/3').",
+          "correct_answer": "\u03c0/2",
+          "model_response": "## Step-by-step Solution\n\n**Step 1: Find the diagonal of the inscribed square.**\n\nSince the square is inscribed in the circle, all four vertices lie on the circle. The diagonal of the square equals the diameter of the circle.\n\nDiagonal of square = 2r\n\n**Step 2: Find the side length of the square.**\n\nFor a square with side length s, the diagonal = s\u221a2.\n\nSo: s\u221a2 = 2r \u2192 s = 2r/\u221a2 = r\u221a2\n\n**Step 3: Calculate the area of the square.**\n\nArea of square = s\u00b2 = (r\u221a2)\u00b2 = 2r\u00b2\n\n**Step 4: Calculate the area of the circle.**\n\nArea of circle = \u03c0r\u00b2\n\n**Step 5: Compute the ratio.**\n\nRatio = Area of circle / Area of square = \u03c0r\u00b2 / 2r\u00b2 = **\u03c0/2**\n\n**Answer: \u03c0/2**",
+          "is_correct": true,
+          "latency_seconds": 4.668,
+          "tokens_prompt": 1241,
+          "tokens_completion": 218,
+          "estimated_cost_usd": 0.006993
+        },
+        {
+          "problem_id": 21,
+          "category": "geometric_proof",
+          "question": "In a regular hexagon with side length s, what is the ratio of the area of the hexagon to the area of its inscribed circle? Express in terms of \u03c0 and simplest radical form.",
+          "correct_answer": "2\u221a3/\u03c0",
+          "model_response": "# Solving: Ratio of Regular Hexagon Area to Inscribed Circle Area\n\n## Step 1: Find the area of the regular hexagon.\nA regular hexagon with side length s consists of 6 equilateral triangles, each with side length s.\n\nArea of one equilateral triangle = (\u221a3/4)s\u00b2\n\nArea of hexagon = 6 \u00d7 (\u221a3/4)s\u00b2 = **(3\u221a3/2)s\u00b2**\n\n## Step 2: Find the radius of the inscribed circle (inradius).\nThe inscribed circle touches the middle of each side. The inradius r is the distance from the center to the midpoint of a side.\n\nFor a regular hexagon, the inradius = (\u221a3/2)s\n\nSo **r = (\u221a3/2)s**\n\n## Step 3: Find the area of the inscribed circle.\nArea of circle = \u03c0r\u00b2 = \u03c0 \u00d7 ((\u221a3/2)s)\u00b2 = \u03c0 \u00d7 (3/4)s\u00b2 = **(3\u03c0/4)s\u00b2**\n\n## Step 4: Compute the ratio.\n$$\\text{Ratio} = \\frac{\\text{Area of hexagon}}{\\text{Area of circle}} = \\frac{\\frac{3\\sqrt{3}}{2}s^2}{\\frac{3\\pi}{4}s^2}$$\n\n$$= \\frac{3\\sqrt{3}}{2} \\times \\frac{4}{3\\pi} = \\frac{4\\sqrt{3}}{2\\pi} = \\frac{2\\sqrt{3}}{\\pi}$$\n\n## Answer: **2\u221a3/\u03c0**",
+          "is_correct": true,
+          "latency_seconds": 8.03,
+          "tokens_prompt": 1213,
+          "tokens_completion": 391,
+          "estimated_cost_usd": 0.009504
+        },
+        {
+          "problem_id": 22,
+          "category": "long_horizon_arithmetic",
+          "question": "Calculate: (((12 + 8) \u00d7 5 - 25) \u00f7 5 + 7) \u00d7 3 - 24) \u00f7 6\n\nAnswer with just the final number.",
+          "correct_answer": "7",
+          "model_response": "Step 1: Innermost parentheses: 12 + 8 = 20.\n\nStep 2: Multiply: 20 \u00d7 5 = 100.\n\nStep 3: Subtract: 100 - 25 = 75.\n\nStep 4: Divide: 75 \u00f7 5 = 15.\n\nStep 5: Add: 15 + 7 = 22.\n\nStep 6: Multiply: 22 \u00d7 3 = 66.\n\nStep 7: Subtract: 66 - 24 = 42.\n\nStep 8: Divide: 42 \u00f7 6 = 7.\n\nAnswer: 7",
+          "is_correct": true,
+          "latency_seconds": 5.702,
+          "tokens_prompt": 1223,
+          "tokens_completion": 168,
+          "estimated_cost_usd": 0.006189
+        },
+        {
+          "problem_id": 23,
+          "category": "long_horizon_arithmetic",
+          "question": "A store has the following promotion: Buy 2 get 1 free on items under $50, plus 20% off if you spend over $100 after the B2G1 discount, plus an additional $15 off if you spend over $150 final total.\n\nYou buy: 4 items at $30 each, 3 items at $25 each, and 3 items at $40 each.\n\nWhat is your final total? Answer with just the dollar amount (no $ sign).",
+          "correct_answer": "161",
+          "model_response": "I'll work through this systematically.\n\n**Step 1: List all items and original total**\n- 4 items at $30 = $120\n- 3 items at $25 = $75\n- 3 items at $40 = $120\n- Total items: 10 items, Original total: $315\n\n**Step 2: Apply Buy 2 Get 1 Free on items under $50**\nAll items are under $50, so B2G1 applies to all 10 items.\n\nFor every 3 items, the cheapest is free. I need to group items to maximize savings (make the most expensive items free... wait, the cheapest in each group of 3 is free, so I should group to maximize the free item value).\n\nActually, to maximize savings, I want the free items to be as expensive as possible. So I should group the cheapest items together so the \"cheapest in group\" is as high as possible.\n\nLet me think differently: for every 3 items, 1 is free (the cheapest one). To maximize savings, pair expensive items with other expensive items so the free one is expensive.\n\nWith 10 items, we get 3 free items (from 3 groups of 3), with 1 item left over.\n\n**Optimal grouping to maximize free item value:**\n- Group 1: $40, $40, $40 \u2192 free item = $40\n- Group 2: $30, $30, $30 \u2192 free item = $30\n- Group 3: $25, $25, $25 \u2192 free item = $25\n- Remaining: $30 (pay full price)\n\nFree items total: $40 + $30 + $25 = $95\n\n**Step 3: Calculate total after B2G1**\n$315 - $95 = $220\n\n**Step 4: Check if over $100 after B2G1 \u2192 apply 20% off**\n$220 > $100, so apply 20% off.\n20% of $220 = $44\n$220 - $44 = $176\n\n**Step 5: Check if over $150 final total \u2192 apply additional $15 off**\n$176 > $150, so apply $15 off.\n$176 - $15 = $161\n\n**Answer: 161**",
+          "is_correct": true,
+          "latency_seconds": 11.063,
+          "tokens_prompt": 1285,
+          "tokens_completion": 542,
+          "estimated_cost_usd": 0.011985
+        },
+        {
+          "problem_id": 24,
+          "category": "long_horizon_arithmetic",
+          "question": "An investment grows as follows: Year 1: +17%, Year 2: -11%, Year 3: +26%, Year 4: -9%, Year 5: +14%.\n\nIf you invested $10,000 and withdrew $2,000 at the end of Year 2, what is the value at the end of Year 5?\n\nAnswer with just the dollar amount (no $ sign, round to nearest dollar).",
+          "correct_answer": "10852",
+          "model_response": "I'll track the investment value year by year.\n\n**Step 1: End of Year 1**\n$10,000 \u00d7 1.17 = $11,700\n\n**Step 2: End of Year 2**\n$11,700 \u00d7 (1 - 0.11) = $11,700 \u00d7 0.89 = $10,413\nAfter withdrawal: $10,413 - $2,000 = $8,413\n\n**Step 3: End of Year 3**\n$8,413 \u00d7 1.26 = $10,600.38\n\n**Step 4: End of Year 4**\n$10,600.38 \u00d7 0.91 = $9,646.35\n\n**Step 5: End of Year 5**\n$9,646.35 \u00d7 1.14 = $10,996.84\n\nAnswer: 10997",
+          "is_correct": false,
+          "latency_seconds": 4.911,
+          "tokens_prompt": 1266,
+          "tokens_completion": 210,
+          "estimated_cost_usd": 0.006948
+        }
+      ],
+      "summary": {
+        "accuracy": 0.9166666666666666,
+        "correct_count": 22,
+        "total_problems": 24,
+        "total_cost_usd": 0.256209,
+        "average_latency_seconds": 8.153,
+        "category_breakdown": {
+          "dyck_4": {
+            "correct": 2,
+            "total": 3,
+            "accuracy": 0.6666666666666666
+          },
+          "object_tracking": {
+            "correct": 3,
+            "total": 3,
+            "accuracy": 1.0
+          },
+          "web_of_lies": {
+            "correct": 3,
+            "total": 3,
+            "accuracy": 1.0
+          },
+          "math_algebra": {
+            "correct": 3,
+            "total": 3,
+            "accuracy": 1.0
+          },
+          "complex_navigation": {
+            "correct": 3,
+            "total": 3,
+            "accuracy": 1.0
+          },
+          "temporal_reasoning": {
+            "correct": 3,
+            "total": 3,
+            "accuracy": 1.0
+          },
+          "geometric_proof": {
+            "correct": 3,
+            "total": 3,
+            "accuracy": 1.0
+          },
+          "long_horizon_arithmetic": {
+            "correct": 2,
+            "total": 3,
+            "accuracy": 0.6666666666666666
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1 @@
+cd /home/azureuser/prompt_engineering && git init && git add -A && git commit -m "Initial commit: BBH-inspired prompt engineering evaluation with Neo"
